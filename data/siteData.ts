@@ -74,8 +74,8 @@ export const siteData = {
   profileFacts: [
     { label: 'name', value: 'Senthilnathan' },
     { label: 'role', value: 'Applied AI Engineer' },
-    { label: 'focus', value: 'applied ML, LLMs, statistical modeling' },
-    { label: 'education', value: 'B.Tech + M.Tech in Engineering Design' },
+    { label: 'focus', value: 'Applied ML, LLMs, Statistical modeling' },
+    { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
   ] as ProfileFact[],
   about: [
     'I am all about becoming my absolute best and seeing what my full potential looks like in practice. For me, that means exploring widely, building seriously, and treating every project as a chance to sharpen both technical depth and personal discipline.',
@@ -84,6 +84,7 @@ export const siteData = {
   ],
   nav: [
     { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Experience', href: '/experience' },
     { label: 'Projects', href: '/projects' },
     { label: 'Principles', href: '/principles' },

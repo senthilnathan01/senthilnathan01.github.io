@@ -34,3 +34,66 @@ a {
   background: rgb(16 185 129 / 0.3);
   color: rgb(244 244 245);
 }
+
+.blog-content {
+  max-width: 72ch;
+}
+
+.blog-content > * + * {
+  margin-top: 1.15rem;
+}
+
+.blog-content h3 {
+  margin-top: 2.6rem;
+  color: rgb(250 204 21);
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.blog-content p,
+.blog-content li {
+  color: rgb(212 212 216);
+  line-height: 1.95;
+}
+
+.blog-content > p:first-of-type {
+  color: rgb(244 244 245);
+  line-height: 2.02;
+}
+
+.blog-content ul {
+  padding-left: 1.25rem;
+}
+
+.blog-content li::marker {
+  color: rgb(45 212 191);
+}
+
+.blog-content li + li {
+  margin-top: 0.45rem;
+}
+
+.blog-content strong {
+  color: rgb(255 45 146);
+  font-weight: 500;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.blog-content a {
+  color: rgb(110 231 183);
+  text-decoration: underline;
+  text-decoration-color: rgb(16 185 129 / 0.45);
+  text-underline-offset: 0.2rem;
+}
+
+.blog-content a:hover {
+  color: rgb(167 243 208);
+}
