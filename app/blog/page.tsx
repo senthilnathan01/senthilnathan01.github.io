@@ -19,6 +19,7 @@ export default function BlogPage() {
             <div className="space-y-1">
               <p className="text-sm text-zinc-400">
                 <span className="text-emerald-400">$</span> {blogCollections.tech.indexCommand}
+                <span className="ml-1 inline-block h-4 w-2 animate-pulse bg-zinc-300 align-middle" aria-hidden="true" />
               </p>
               <h2 className="text-2xl text-zinc-100">{blogCollections.tech.title}</h2>
               <p className="max-w-2xl text-sm leading-7 text-zinc-400">{blogCollections.tech.blurb}</p>

@@ -10,7 +10,7 @@ export default function ContactPage() {
     <main className="space-y-8">
       <SiteHeader />
       <TerminalWindow title="session://contact">
-        <CommandSection command="ping senthil">
+        <CommandSection command="ping senthil" withCursor>
           <p className="max-w-2xl text-zinc-300">{siteData.contactBlurb}</p>
         </CommandSection>
 
