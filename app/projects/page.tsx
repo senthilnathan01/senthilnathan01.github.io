@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CommandSection } from '@/components/CommandSection';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
@@ -9,21 +10,51 @@ export default function ProjectsPage() {
     <main className="space-y-8">
       <SiteHeader />
       <TerminalWindow title="session://projects">
-        <section className="space-y-6">
-          <p className="text-sm text-zinc-400">
-            <span className="text-emerald-400">$</span> tree projects --depth 1
-          </p>
+        <CommandSection command="cat projects.txt" withCursor>
+          <p className="max-w-3xl text-zinc-300">{siteData.projectsIntro}</p>
+        </CommandSection>
+
+        <CommandSection command="ls projects/">
           <ul className="space-y-5">
             {siteData.projects.map((project) => (
-              <li key={project.title} className="space-y-2 border-l border-zinc-800 pl-4">
-                <h2 className="text-zinc-100">{project.title}</h2>
-                <p className="text-zinc-300">{project.description}</p>
-                <p className="text-xs text-zinc-500">stack: {project.stack.join(' · ')}</p>
-                {project.href ? <Link href={project.href} className="text-sm text-emerald-300 hover:text-emerald-200">View details ↗</Link> : null}
+              <li
+                key={project.title}
+                className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900/70 p-5"
+              >
+                <div className="space-y-2">
+                  <h2 className="text-lg text-zinc-100">{project.title}</h2>
+                  <p className="text-zinc-300">{project.description}</p>
+                </div>
+
+                <ul className="space-y-2 text-sm leading-6 text-zinc-400">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>- {highlight}</li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  {project.stack.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md border border-amber-500/20 bg-amber-500/8 px-3 py-1.5 text-xs uppercase tracking-[0.16em] text-amber-100"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex text-sm text-emerald-300 transition hover:text-emerald-200"
+                >
+                  Open repository
+                </Link>
               </li>
             ))}
           </ul>
-        </section>
+        </CommandSection>
       </TerminalWindow>
       <SiteFooter />
     </main>

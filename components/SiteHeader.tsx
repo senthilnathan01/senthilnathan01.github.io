@@ -9,14 +9,19 @@ export function SiteHeader() {
         <Link href="/" className="text-sm text-zinc-100 transition hover:text-emerald-300">
           {siteData.brand}
         </Link>
-        <p className="text-xs text-zinc-500">{siteData.status}</p>
+        <p className="text-xs lowercase tracking-[0.18em] text-zinc-500">{siteData.status}</p>
       </div>
       <MobileNav items={siteData.nav} />
       <nav className="hidden sm:block" aria-label="Primary">
-        <ul className="flex gap-5 text-sm text-zinc-300">
+        <ul className="flex flex-wrap gap-5 text-sm text-zinc-300">
           {siteData.nav.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className="transition hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400">
+              <Link
+                href={item.href}
+                target={item.href.endsWith('.pdf') ? '_blank' : undefined}
+                rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
+                className="transition hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400"
+              >
                 {item.label}
               </Link>
             </li>

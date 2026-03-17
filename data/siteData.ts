@@ -3,22 +3,42 @@ export type NavItem = {
   href: string;
 };
 
-export type ExternalLink = {
+export type LinkItem = {
   label: string;
   href: string;
   note?: string;
 };
 
-export type UpdateItem = {
-  date: string;
-  text: string;
-  href?: string;
+export type ProfileFact = {
+  label: string;
+  value: string;
+};
+
+export type ExperienceItem = {
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  description: string;
+  highlights: string[];
 };
 
 export type ProjectItem = {
   title: string;
   description: string;
+  highlights: string[];
   stack: string[];
+  href: string;
+};
+
+export type PrincipleItem = {
+  title: string;
+  description: string;
+};
+
+export type UpdateItem = {
+  date: string;
+  text: string;
   href?: string;
 };
 
@@ -39,82 +59,131 @@ export type ResearchItem = {
 
 export const siteData = {
   brand: '~/senthil',
-  name: 'Senthil Nathan',
-  role: 'Independent researcher + software engineer',
-  status: '[ OK ] Starting session',
+  name: 'Senthilnathan',
+  role: 'Applied AI Engineer',
+  status: 'building practical AI systems',
   summary:
-    'I build practical systems and conduct applied research at the intersection of language models, developer tools, and human-computer interaction.',
+    'I am an Applied AI Engineer who likes turning curiosity into working systems. I move fast, take ownership, and enjoy building across machine learning, LLMs, statistical modeling, and thoughtful AI products.',
+  educationSummary:
+    'My academic path includes both B.Tech and M.Tech study in IIT Madras, and that balance between theory and execution shapes how I approach engineering, research, and long-term growth.',
   focusAreas: [
-    'LLM evaluation and alignment workflows',
-    'Developer productivity tooling',
-    'Information retrieval and ranking systems',
+    'applied machine learning',
+    'LLMs',
+    'statistical modeling',
+  ],
+  profileFacts: [
+    { label: 'name', value: 'Senthilnathan' },
+    { label: 'role', value: 'Applied AI Engineer' },
+    { label: 'focus', value: 'applied ML, LLMs, statistical modeling' },
+    { label: 'education', value: 'B.Tech + M.Tech in Engineering Design' },
+  ] as ProfileFact[],
+  about: [
+    'I am all about becoming my absolute best and seeing what my full potential looks like in practice. For me, that means exploring widely, building seriously, and treating every project as a chance to sharpen both technical depth and personal discipline.',
+    'My day-to-day mindset stays practical: act fast, learn quickly, and keep momentum high.',
+    'I recharge by going deep into math, AI, computer science, and finance, with philosophy in the mix whenever I want to zoom out and think more clearly.',
   ],
   nav: [
     { label: 'Home', href: '/' },
-    { label: 'Research', href: '/research' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Experience', href: '/experience' },
     { label: 'Projects', href: '/projects' },
+    { label: 'Principles', href: '/principles' },
+    { label: 'CV', href: '/cv/senthilnathan_t.pdf' },
     { label: 'Contact', href: '/contact' },
   ] as NavItem[],
   links: [
-    { label: 'GitHub', href: 'https://github.com/your-handle', note: '@your-handle' },
-    { label: 'X / Twitter', href: 'https://x.com/your-handle', note: '@your-handle' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/your-handle', note: 'professional profile' },
-    { label: 'Email', href: 'mailto:you@example.com', note: 'you@example.com' },
-  ] as ExternalLink[],
-  updates: [
-    { date: '2026-02-12', text: 'Shipped a lightweight benchmark runner for retrieval-augmented assistants.', href: '/projects' },
-    { date: '2026-01-27', text: 'Published notes on evaluation design for multi-step coding agents.', href: '/blog' },
-    { date: '2025-12-19', text: 'Presented a short talk on terminal-native UX patterns for research tooling.', href: '/research' },
-  ] as UpdateItem[],
+    { label: 'github', href: 'https://github.com/senthilnathan01', note: '@senthilnathan01' },
+    { label: 'linkedin', href: 'https://linkedin.com/in/senthilnathan_t', note: '@senthilnathan_t' },
+    { label: 'x', href: 'https://x.com/cybersenth', note: '@cybersenth' },
+    { label: 'email', href: 'mailto:tsnsenthil01@gmail.com', note: 'tsnsenthil01@gmail.com' },
+    { label: 'cv', href: '/cv/senthilnathan_t.pdf', note: 'opens in new tab' },
+  ] as LinkItem[],
+  experienceIntro:
+    'A focused view of internship experience from my resume.',
+  experience: [
+    {
+      company: 'Featurely AI',
+      role: 'Applied AI Intern',
+      location: 'San Francisco Bay Area, US',
+      period: 'June 2025 - July 2025',
+      description:
+        'Worked on explainable human-behavior simulation systems for product understanding under tight data constraints.',
+      highlights: [
+        'Built an explainable human-behavior simulation model using LLMs, probabilistic modeling, graph-based memory, and user-system simulation ideas.',
+        'Engineered an episodic memory system using Neo4j and Pinecone with recursive retrieval across vector RAG and graph RAG patterns.',
+        'Deployed the system with FastAPI, Docker, AWS EC2, and a Vector-based frontend so stakeholders could test it remotely.',
+      ],
+    },
+    {
+      company: 'Caterpillar',
+      role: 'Machine Learning Intern, Global Data Science Team (Optimization Pod)',
+      location: 'Chennai, India',
+      period: 'Jan 2025 - May 2025',
+      description:
+        'Worked on optimization and reinforcement-learning systems for mining-fleet dispatch and simulation workflows.',
+      highlights: [
+        'Developed a multi-agent reinforcement learning dispatch system for mining fleets using proximal policy optimization.',
+        'Built a multi-objective reward framework balancing productivity, truck congestion, and power efficiency.',
+        'Automated mine-layout generation to cut setup time from hours to minutes for faster experimentation across many site layouts.',
+      ],
+    },
+  ] as ExperienceItem[],
+  projectsIntro:
+    'Selected technical projects I want to feature right now.',
   projects: [
     {
-      title: 'TermLab',
-      description: 'A terminal-native interface for orchestrating reproducible LLM experiments with strict config snapshots.',
-      stack: ['TypeScript', 'Next.js', 'SQLite'],
-      href: '#',
+      title: 'Implementation of Custom Deep Learning Architectures for Computer Vision',
+      description:
+        'Built a broad computer vision portfolio spanning neural style transfer, YOLOv2 vehicle detection, FaceNet-style recognition, U-Net segmentation, ResNet50 classification, and CNN-based visual classifiers.',
+      highlights: [
+        'Used VGG-19 with Gram-matrix optimization for neural style transfer image generation.',
+        'Implemented YOLOv2 with IoU and non-maximum suppression for autonomous-driving car detection.',
+        'Built FaceNet-inspired recognition with an Inception backbone, triplet loss, and distance-threshold matching.',
+        'Designed U-Net and ResNet50 pipelines for segmentation and classification tasks, with strong reported accuracy on benchmark datasets.',
+      ],
+      stack: ['Python', 'Deep Learning', 'Computer Vision'],
+      href: 'https://github.com/senthilnathan01/my_ml_projects',
     },
     {
-      title: 'SignalRank',
-      description: 'Hybrid reranking pipeline combining lexical and semantic relevance for technical knowledge bases.',
-      stack: ['Python', 'FastAPI', 'PostgreSQL'],
-      href: '#',
-    },
-    {
-      title: 'TraceDeck',
-      description: 'A compact observability layer for long-running agent workflows with timeline-first diagnostics.',
-      stack: ['Go', 'OpenTelemetry', 'ClickHouse'],
-      href: '#',
+      title: 'Foundational Machine Learning and Statistical Modeling',
+      description:
+        'Implemented a wide range of statistical and machine learning methods from scratch, including Bayes classifiers, Bayesian regression, clustering, ensemble methods, EM for mixture models, PCA plus k-NN, and regularized regression.',
+      highlights: [
+        'Built binary and multiclass probabilistic classifiers with covariance analysis, confusion matrices, and risk-sensitive decision rules.',
+        'Implemented Bayesian regression, DBSCAN, spectral clustering, and Gaussian mixture models to study uncertainty and non-linear structure.',
+        'Developed decision trees, random forests, PCA plus k-NN pipelines, and ridge/lasso regression with hyperparameter search.',
+        'Used careful evaluation across accuracy, error rates, reconstruction quality, and generalization behavior to compare methods.',
+      ],
+      stack: ['Python', 'Statistical ML', 'Pattern Recognition'],
+      href: 'https://github.com/senthilnathan01/prml-project',
     },
   ] as ProjectItem[],
-  posts: [
+  growthPhilosophy:
+    "I'm all about becoming my absolute best. I want to see what my full potential is, and I believe broad capability matters because becoming exceptional in one domain usually requires getting strong across many.",
+  principles: [
     {
-      title: 'What good LLM evals look like in practice',
-      date: '2026-01-27',
-      summary: 'A practical checklist for writing fast, meaningful evaluations that keep teams honest.',
-      href: '#',
+      title: 'Embrace bold risks',
+      description:
+        'I believe real growth comes from taking bold risks and learning through failure. If nothing has gone wrong lately, that usually means the work was not ambitious enough.',
     },
     {
-      title: 'Designing command-line interfaces for thinking',
-      date: '2025-11-18',
-      summary: 'Why concise prompts, pacing, and whitespace matter more than visual ornamentation.',
-      href: '#',
-    },
-  ] as PostItem[],
-  research: [
-    {
-      title: 'Interactive Protocols for Human-in-the-Loop Agent Debugging',
-      venue: 'Preprint',
-      year: '2026',
-      summary: 'Explores compact interaction loops that improve operator trust and intervention speed.',
-      href: '#',
+      title: 'Act fast and take ownership',
+      description:
+        'I try to move with urgency and high agency. When something matters, I want to be the person who carries it forward instead of waiting for ideal conditions.',
     },
     {
-      title: 'Measuring Drift in Retrieval-Augmented Systems over Time',
-      venue: 'Workshop on Reliable ML Systems',
-      year: '2025',
-      summary: 'Introduces a longitudinal benchmark for document freshness, citation quality, and answer stability.',
-      href: '#',
+      title: 'Follow boundless curiosity',
+      description:
+        'My natural curiosity is the engine behind everything else. It keeps me exploring new ideas, new domains, and better ways to think and build.',
     },
-  ] as ResearchItem[],
+  ] as PrincipleItem[],
+  interests: ['math', 'AI', 'computer science', 'finance', 'philosophy'],
+  contactBlurb:
+    'If you want to talk about AI, machine learning, systems, or ambitious ideas worth building, feel free to reach out through any of the links below.',
+  cv: {
+    href: '/cv/senthilnathan_t.pdf',
+    downloadName: 'senthilnathan_t.pdf',
+  },
+  updates: [] as UpdateItem[],
+  posts: [] as PostItem[],
+  research: [] as ResearchItem[],
 };

@@ -1,9 +1,9 @@
+import Image from 'next/image';
 import { CommandSection } from '@/components/CommandSection';
 import { LinkList } from '@/components/LinkList';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
-import { UpdateLog } from '@/components/UpdateLog';
 import { siteData } from '@/data/siteData';
 
 export default function Home() {
@@ -11,29 +11,60 @@ export default function Home() {
     <main className="space-y-8">
       <SiteHeader />
       <TerminalWindow title="session://home">
-        <CommandSection command="whoami" withCursor>
-          <p className="text-lg text-zinc-100 sm:text-xl">{siteData.name}</p>
-          <p className="text-zinc-400">{siteData.role}</p>
+        <CommandSection command="whois senthil" withCursor>
+          <div className="grid gap-6 md:grid-cols-[180px_minmax(0,1fr)]">
+            <div className="overflow-hidden rounded-md border border-zinc-800 bg-zinc-900">
+              <Image
+                src="/images/profile.jpg"
+                alt="Portrait of Senthilnathan"
+                width={360}
+                height={450}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+
+            <dl className="space-y-3 text-sm sm:text-base">
+              {siteData.profileFacts.map((fact) => (
+                <div key={fact.label} className="grid gap-1 text-zinc-300 sm:grid-cols-[92px_18px_minmax(0,1fr)]">
+                  <dt className="text-zinc-500">{fact.label}</dt>
+                  <span className="hidden text-zinc-700 sm:inline">:</span>
+                  <dd className={fact.label === 'role' ? 'text-amber-300' : 'text-zinc-100'}>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </CommandSection>
 
         <CommandSection command="cat about.txt">
-          <p>{siteData.summary}</p>
+          <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4 sm:p-5">
+            <div className="space-y-4">
+              <p className="text-base text-zinc-100">{siteData.summary}</p>
+              {siteData.about.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              <p className="text-cyan-100">{siteData.educationSummary}</p>
+            </div>
+          </div>
         </CommandSection>
 
-        <CommandSection command="ls focus-areas/">
-          <ul className="space-y-1">
+        <CommandSection command="ls current-focus/">
+          <div className="flex flex-wrap gap-3">
             {siteData.focusAreas.map((area) => (
-              <li key={area}>- {area}</li>
+              <span
+                key={area}
+                className="rounded-md border border-amber-500/20 bg-amber-500/8 px-3 py-2 text-sm text-amber-100"
+              >
+                {area}
+              </span>
             ))}
-          </ul>
+          </div>
         </CommandSection>
 
-        <CommandSection command="cat links.md">
-          <LinkList items={siteData.links} />
-        </CommandSection>
-
-        <CommandSection command="tail -n 3 updates.log">
-          <UpdateLog items={siteData.updates} />
+        <CommandSection command="cat links.txt">
+          <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
+            <LinkList items={siteData.links} />
+          </div>
         </CommandSection>
       </TerminalWindow>
       <SiteFooter />

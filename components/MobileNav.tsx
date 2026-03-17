@@ -26,7 +26,13 @@ export function MobileNav({ items }: MobileNavProps) {
           <ul className="space-y-2 text-sm">
             {items.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="block text-zinc-300 transition hover:text-emerald-300" onClick={() => setOpen(false)}>
+                <Link
+                  href={item.href}
+                  target={item.href.endsWith('.pdf') ? '_blank' : undefined}
+                  rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
+                  className="block text-zinc-300 transition hover:text-emerald-300"
+                  onClick={() => setOpen(false)}
+                >
                   {item.label}
                 </Link>
               </li>

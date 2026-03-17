@@ -1,4 +1,5 @@
 import { LinkList } from '@/components/LinkList';
+import { CommandSection } from '@/components/CommandSection';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
@@ -9,16 +10,15 @@ export default function ContactPage() {
     <main className="space-y-8">
       <SiteHeader />
       <TerminalWindow title="session://contact">
-        <section className="space-y-5">
-          <p className="text-sm text-zinc-400">
-            <span className="text-emerald-400">$</span> ping senthil
-          </p>
-          <p className="max-w-2xl text-zinc-300">
-            I enjoy collaborating on research-driven product work, evaluation design, and thoughtful developer experiences.
-            Feel free to reach out through any channel below.
-          </p>
-          <LinkList items={siteData.links} />
-        </section>
+        <CommandSection command="ping senthil">
+          <p className="max-w-2xl text-zinc-300">{siteData.contactBlurb}</p>
+        </CommandSection>
+
+        <CommandSection command="cat contacts.txt">
+          <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
+            <LinkList items={siteData.links} />
+          </div>
+        </CommandSection>
       </TerminalWindow>
       <SiteFooter />
     </main>
