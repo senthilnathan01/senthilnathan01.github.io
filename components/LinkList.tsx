@@ -7,9 +7,9 @@ type LinkListProps = {
 
 export function LinkList({ items }: LinkListProps) {
   return (
-    <ul className="flex flex-wrap gap-3">
+    <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       {items.map((item) => (
-        <li key={item.label}>
+        <li key={item.label} className="min-w-0">
           {/*
             Open external destinations and document files in a new tab while
             keeping internal pages in the same tab.
@@ -20,7 +20,7 @@ export function LinkList({ items }: LinkListProps) {
           */}
           <Link
             href={item.href}
-            className="group block min-w-32 rounded-md border border-zinc-800 bg-zinc-900/80 px-3 py-2 text-sm transition hover:border-emerald-400/50 hover:bg-zinc-900 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400"
+            className="group block h-full rounded-md border border-zinc-800 bg-zinc-900/80 px-3 py-2 text-sm transition hover:border-emerald-400/50 hover:bg-zinc-900 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400"
             target={item.href.startsWith('http') || item.href.endsWith('.pdf') ? '_blank' : undefined}
             rel={item.href.startsWith('http') || item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
           >

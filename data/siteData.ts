@@ -62,8 +62,7 @@ export const siteData = {
   name: 'Senthilnathan',
   role: 'Applied AI Engineer',
   status: 'building practical AI systems',
-  summary:
-    'I am an Applied AI Engineer who likes turning curiosity into working systems.',
+  summary: '',
   focusAreas: [
     'applied machine learning',
     'LLMs',
@@ -90,7 +89,6 @@ export const siteData = {
     { label: 'linkedin', href: 'https://linkedin.com/in/senthilnathan_t', note: '@senthilnathan_t' },
     { label: 'x', href: 'https://x.com/cybersenth', note: '@cybersenth' },
     { label: 'email', href: 'mailto:tsnsenthil01@gmail.com', note: 'tsnsenthil01@gmail.com' },
-    { label: 'cv', href: '/cv/senthilnathan_t.pdf', note: 'opens in new tab' },
   ] as LinkItem[],
   experienceIntro:
     'A focused view of internships, leadership, and team experience from my resume.',
@@ -187,7 +185,7 @@ export const siteData = {
   ] as PrincipleItem[],
   interests: ['math', 'AI', 'computer science', 'finance', 'philosophy'],
   contactBlurb:
-    'If you want to talk about AI, machine learning, systems, or ambitious ideas worth building, feel free to reach out through any of the links below.',
+    'If you want to talk about AI, machine learning, systems, or ambitious ideas worth building, feel free to reach out :)',
   cv: {
     href: '/cv/senthilnathan_t.pdf',
     downloadName: 'senthilnathan_t.pdf',
