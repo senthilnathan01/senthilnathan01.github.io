@@ -43,7 +43,6 @@ export default function Home() {
               {siteData.about.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
-              <p className="text-cyan-100">{siteData.educationSummary}</p>
             </div>
           </div>
         </CommandSection>

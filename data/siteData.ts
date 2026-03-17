@@ -63,9 +63,7 @@ export const siteData = {
   role: 'Applied AI Engineer',
   status: 'building practical AI systems',
   summary:
-    'I am an Applied AI Engineer who likes turning curiosity into working systems. I move fast, take ownership, and enjoy building across machine learning, LLMs, statistical modeling, and thoughtful AI products.',
-  educationSummary:
-    'My academic path includes both B.Tech and M.Tech study in IIT Madras, and that balance between theory and execution shapes how I approach engineering, research, and long-term growth.',
+    'I am an Applied AI Engineer who likes turning curiosity into working systems.',
   focusAreas: [
     'applied machine learning',
     'LLMs',
@@ -77,11 +75,7 @@ export const siteData = {
     { label: 'focus', value: 'Applied ML, LLMs, Statistical modeling' },
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
   ] as ProfileFact[],
-  about: [
-    'I am all about becoming my absolute best and seeing what my full potential looks like in practice. For me, that means exploring widely, building seriously, and treating every project as a chance to sharpen both technical depth and personal discipline.',
-    'My day-to-day mindset stays practical: act fast, learn quickly, and keep momentum high.',
-    'I recharge by going deep into math, AI, computer science, and finance, with philosophy in the mix whenever I want to zoom out and think more clearly.',
-  ],
+  about: ['Currently I am learning inference engineering and building for agents.'],
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Blog', href: '/blog' },
