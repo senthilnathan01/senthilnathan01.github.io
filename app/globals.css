@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background-image: radial-gradient(circle at top, rgb(39 39 42 / 0.2), transparent 50%);
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-decoration-thickness: 1px;
+}
+
+::selection {
+  background: rgb(16 185 129 / 0.3);
+  color: rgb(244 244 245);
+}
