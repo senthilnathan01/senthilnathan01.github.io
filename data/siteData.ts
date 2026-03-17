@@ -93,16 +93,17 @@ export const siteData = {
     { label: 'cv', href: '/cv/senthilnathan_t.pdf', note: 'opens in new tab' },
   ] as LinkItem[],
   experienceIntro:
-    'A focused view of internship experience from my resume.',
+    'A focused view of internships, leadership, and team experience from my resume.',
   experience: [
     {
-      company: 'Featurely AI',
+      company: 'Featurely AI (San Francisco Bay Area Based)',
       role: 'Applied AI Intern',
-      location: 'San Francisco Bay Area, US',
+      location: 'Bangalore, India',
       period: 'June 2025 - July 2025',
       description:
         'Worked on explainable human-behavior simulation systems for product understanding under tight data constraints.',
       highlights: [
+        'Featurely is a US AI startup backed by Bling Capital, whose partners have backed companies such as Palantir and Lyft.',
         'Built an explainable human-behavior simulation model using LLMs, probabilistic modeling, graph-based memory, and user-system simulation ideas.',
         'Engineered an episodic memory system using Neo4j and Pinecone with recursive retrieval across vector RAG and graph RAG patterns.',
         'Deployed the system with FastAPI, Docker, AWS EC2, and a Vector-based frontend so stakeholders could test it remotely.',
@@ -119,6 +120,19 @@ export const siteData = {
         'Developed a multi-agent reinforcement learning dispatch system for mining fleets using proximal policy optimization.',
         'Built a multi-objective reward framework balancing productivity, truck congestion, and power efficiency.',
         'Automated mine-layout generation to cut setup time from hours to minutes for faster experimentation across many site layouts.',
+      ],
+    },
+    {
+      company: 'IIT Madras',
+      role: 'Core Team Member, Wellness Team',
+      location: 'Chennai, India',
+      period: 'Aug 2022 - May 2025',
+      description:
+        'Contributed to student wellness initiatives while helping coordinate peer support and campus events over a three-year stretch.',
+      highlights: [
+        'Managed a team of 50 coordinators across wellness initiatives and student support efforts.',
+        'Led numerous wellness events for the IIT Madras student community.',
+        'Offered peer counselling support to students.',
       ],
     },
   ] as ExperienceItem[],
