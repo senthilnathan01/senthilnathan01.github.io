@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -21,20 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-zinc-950 font-mono text-zinc-100 antialiased">
+      <head>
         {gaMeasurementId ? (
           <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-              strategy="afterInteractive"
-            />
-            <Script
-              id="google-analytics"
-              strategy="afterInteractive"
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
+            <script
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
+                  window.gtag = gtag;
                   gtag('js', new Date());
                   gtag('config', '${gaMeasurementId}');
                 `,
@@ -42,6 +37,8 @@ export default function RootLayout({
             />
           </>
         ) : null}
+      </head>
+      <body className="bg-zinc-950 font-mono text-zinc-100 antialiased">
         <div className="mx-auto min-h-screen w-full max-w-5xl px-5 py-8 sm:px-8 sm:py-10">{children}</div>
       </body>
     </html>
