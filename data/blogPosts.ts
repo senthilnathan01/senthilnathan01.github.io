@@ -67,6 +67,13 @@ export const blogCollections: Record<
 };
 
 const postConfigByUrl: Record<string, BlogConfig> = {
+  'https://medium.com/@tsnsenthil01/google-analytics-worked-on-localhost-but-failed-on-github-pages-heres-what-i-learned-577ed97374cd': {
+    slug: 'google-analytics-worked-on-localhost-but-failed-on-github-pages-heres-what-i-learned',
+    category: 'tech',
+    categoryLabel: blogCollections.tech.label,
+    collectionTitle: blogCollections.tech.title,
+    collectionBlurb: blogCollections.tech.blurb,
+  },
   'https://medium.com/@tsnsenthil01/what-it-actually-takes-to-be-a-strong-ai-ml-engineer-in-2026-dd7bcb4661a8': {
     slug: 'what-it-actually-takes-to-be-a-strong-ai-ml-engineer-in-2026',
     category: 'tech',
