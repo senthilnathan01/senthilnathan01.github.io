@@ -23,7 +23,7 @@ export default function ProjectsPage() {
               >
                 <div className="space-y-2">
                   <h2 className="text-lg text-zinc-100">{project.title}</h2>
-                  <p className="text-zinc-300">{project.description}</p>
+                  <p className="text-zinc-400">{project.description}</p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">

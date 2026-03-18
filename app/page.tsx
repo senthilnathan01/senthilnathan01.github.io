@@ -49,19 +49,6 @@ export default function Home() {
           </div>
         </CommandSection>
 
-        <CommandSection command="ls current-focus/">
-          <div className="flex flex-wrap gap-3">
-            {siteData.focusAreas.map((area) => (
-              <span
-                key={area}
-                className="rounded-md border border-amber-500/20 bg-amber-500/8 px-3 py-2 text-sm text-amber-100"
-              >
-                {area}
-              </span>
-            ))}
-          </div>
-        </CommandSection>
-
         <CommandSection command="cat links.txt">
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
             <LinkList items={siteData.links} />
