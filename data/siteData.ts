@@ -70,7 +70,8 @@ export const siteData = {
   profileFacts: [
     { label: 'name', value: 'Senthilnathan' },
     { label: 'role', value: 'Applied AI Engineer' },
-    { label: 'focus', value: 'Applied ML, LLMs, Statistical modeling' },
+    { label: 'company', value: 'Loading...' },
+    { label: 'previously', value: 'Featurely AI, Caterpillar, ...' },
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
   ] as ProfileFact[],
   about: ['Currently I am learning inference engineering and building for agents.'],
