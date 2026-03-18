@@ -74,7 +74,7 @@ export const siteData = {
     { label: 'previously', value: 'Featurely AI, Caterpillar, ...' },
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
   ] as ProfileFact[],
-  about: ['Currently I am learning inference engineering and building for agents.'],
+  about: ['Currently I am learning inference engineering and also building for agents.'],
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Blog', href: '/blog' },
