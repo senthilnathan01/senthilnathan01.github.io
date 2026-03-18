@@ -14,10 +14,33 @@ Personal portfolio site with a terminal-inspired UI, built as a fully static Nex
 
 ```bash
 npm install
+```
+
+If you want analytics enabled locally, create `.env.local` from `.env.example` and set your Google Analytics measurement ID:
+
+```bash
+cp .env.example .env.local
+```
+
+Then update:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Continue with:
+
+```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Visitor tracking
+
+Google Analytics is wired in via `app/layout.tsx` and is enabled only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set.
+
+For GitHub Pages deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` as a GitHub repository secret so the workflow can inject it during the static build.
 
 ## Production build
 
