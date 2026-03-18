@@ -1,46 +1,76 @@
-# Terminal Portfolio (Next.js)
+# Senthilnathan Portfolio
 
-Minimal personal website with a dark terminal aesthetic, built with:
-- Next.js (App Router)
+Personal portfolio site with a terminal-inspired UI, built as a fully static Next.js app for GitHub Pages.
+
+## Stack
+
+- Next.js 16 (App Router)
+- React 19
 - TypeScript
-- Tailwind CSS
-- Static export (`output: "export"`)
+- Tailwind CSS 4
+- Static export via `output: 'export'`
 
-## Setup
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Build static site
+## Production build
 
 ```bash
 npm run build
 ```
 
-Static files are generated in `out/`.
+The static export is generated in `out/`.
 
-## Content editing
+## Site structure
 
-Update placeholder profile, links, projects, posts, and research entries in:
+This project currently includes:
 
-- `data/siteData.ts`
+- Home
+- Blog
+- Experience
+- Projects
+- Principles
+- Research
+- Contact
+- Downloadable CV
 
-## Deploy to GitHub Pages
+## Content sources
 
-This repo is already configured for static export, so GitHub Pages can host it directly.
+Most editable site content lives in `data/siteData.ts`, including:
 
-1. Push the repo to GitHub.
+- profile details
+- navigation
+- social/contact links
+- experience
+- projects
+- principles
+- research and update placeholders
+
+Blog content is assembled from:
+
+- `data/blogPosts.generated.json` for post payloads
+- `data/blogPosts.ts` for slugs, categories, labels, summaries, and link cleanup
+
+Static assets live in `public/`, including the profile image and CV PDF.
+
+## Deployment
+
+The site is configured for GitHub Pages with a GitHub Actions workflow at `.github/workflows/deploy.yml`.
+
+To deploy:
+
+1. Push the repository to GitHub.
 2. In GitHub, open `Settings -> Pages`.
 3. Set the source to `GitHub Actions`.
-4. Push to `main` and let the workflow publish the `out/` directory.
-
-The deployment workflow lives in `.github/workflows/deploy.yml`.
+4. Push to `main` to trigger the build and deployment workflow.
 
 ## Notes
 
-- This works well on GitHub Pages because the site is fully static.
-- If you later add Next.js server features like API routes, middleware, or server-side rendering, GitHub Pages will no longer be enough on its own.
+- `next.config.ts` enables static export and unoptimized images for GitHub Pages compatibility.
+- Because this is a static export, features that require a live Next.js server, such as API routes or middleware, will not work on GitHub Pages without a different hosting setup.
