@@ -26,7 +26,6 @@ export type ExperienceItem = {
 export type ProjectItem = {
   title: string;
   description: string;
-  highlights: string[];
   stack: string[];
   href: string;
 };
@@ -91,7 +90,7 @@ export const siteData = {
     { label: 'email', href: 'mailto:tsnsenthil01@gmail.com', note: 'tsnsenthil01@gmail.com' },
   ] as LinkItem[],
   experienceIntro:
-    'A focused view of internships, leadership, and team experience from my resume.',
+    'A focused view of internships, leadership, and team experience.',
   experience: [
     {
       company: 'Featurely AI (San Francisco Bay Area Based)',
@@ -141,12 +140,6 @@ export const siteData = {
       title: 'Implementation of Custom Deep Learning Architectures for Computer Vision',
       description:
         'Built a broad computer vision portfolio spanning neural style transfer, YOLOv2 vehicle detection, FaceNet-style recognition, U-Net segmentation, ResNet50 classification, and CNN-based visual classifiers.',
-      highlights: [
-        'Used VGG-19 with Gram-matrix optimization for neural style transfer image generation.',
-        'Implemented YOLOv2 with IoU and non-maximum suppression for autonomous-driving car detection.',
-        'Built FaceNet-inspired recognition with an Inception backbone, triplet loss, and distance-threshold matching.',
-        'Designed U-Net and ResNet50 pipelines for segmentation and classification tasks, with strong reported accuracy on benchmark datasets.',
-      ],
       stack: ['Python', 'Deep Learning', 'Computer Vision'],
       href: 'https://github.com/senthilnathan01/my_ml_projects',
     },
@@ -154,12 +147,6 @@ export const siteData = {
       title: 'Foundational Machine Learning and Statistical Modeling',
       description:
         'Implemented a wide range of statistical and machine learning methods from scratch, including Bayes classifiers, Bayesian regression, clustering, ensemble methods, EM for mixture models, PCA plus k-NN, and regularized regression.',
-      highlights: [
-        'Built binary and multiclass probabilistic classifiers with covariance analysis, confusion matrices, and risk-sensitive decision rules.',
-        'Implemented Bayesian regression, DBSCAN, spectral clustering, and Gaussian mixture models to study uncertainty and non-linear structure.',
-        'Developed decision trees, random forests, PCA plus k-NN pipelines, and ridge/lasso regression with hyperparameter search.',
-        'Used careful evaluation across accuracy, error rates, reconstruction quality, and generalization behavior to compare methods.',
-      ],
       stack: ['Python', 'Statistical ML', 'Pattern Recognition'],
       href: 'https://github.com/senthilnathan01/prml-project',
     },

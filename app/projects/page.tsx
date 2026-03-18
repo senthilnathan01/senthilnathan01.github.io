@@ -26,12 +26,6 @@ export default function ProjectsPage() {
                   <p className="text-zinc-300">{project.description}</p>
                 </div>
 
-                <ul className="space-y-2 text-sm leading-6 text-zinc-400">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>- {highlight}</li>
-                  ))}
-                </ul>
-
                 <div className="flex flex-wrap items-center gap-3">
                   {project.stack.map((tag) => (
                     <span
