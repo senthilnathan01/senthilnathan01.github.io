@@ -30,16 +30,7 @@ export default function PrinciplesPage() {
         </CommandSection>
 
         <CommandSection command="cat interests.txt">
-          <div className="flex flex-wrap gap-3">
-            {siteData.interests.map((interest) => (
-              <span
-                key={interest}
-                className="rounded-md border border-emerald-500/20 bg-emerald-500/8 px-3 py-2 text-sm text-emerald-100"
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
+          <p className="max-w-3xl text-base leading-8 text-emerald-100">{siteData.interestsBlurb}</p>
         </CommandSection>
       </TerminalWindow>
       <SiteFooter />

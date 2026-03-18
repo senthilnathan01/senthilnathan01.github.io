@@ -153,25 +153,26 @@ export const siteData = {
     },
   ] as ProjectItem[],
   growthPhilosophy:
-    "I'm all about becoming my absolute best. I want to see what my full potential is, and I believe broad capability matters because becoming exceptional in one domain usually requires getting strong across many.",
+    "I'm all about becoming my absolute best (I want to see what my full potential is). On a side note, I also believe broad capability matters because becoming exceptional in one domain usually requires getting strong across many.",
   principles: [
     {
       title: 'Embrace bold risks',
       description:
-        'I believe real growth comes from taking bold risks and learning through failure. If nothing has gone wrong lately, that usually means the work was not ambitious enough.',
+        'I believe real growth comes from actively taking bold risks and learning through failure (because if you’ve never failed, you’ve probably never tried anything truly new).',
     },
     {
       title: 'Act fast and take ownership',
       description:
-        'I try to move with urgency and high agency. When something matters, I want to be the person who carries it forward instead of waiting for ideal conditions.',
+        'Serious high agency here! I make sure things get done, no matter what challenges pop up.',
     },
     {
       title: 'Follow boundless curiosity',
       description:
-        'My natural curiosity is the engine behind everything else. It keeps me exploring new ideas, new domains, and better ways to think and build.',
+        'My natural, boundless curiosity about everything is my fundamental driving force. It keeps me exploring new ideas, new domains, and better ways to think and build.',
     },
   ] as PrincipleItem[],
-  interests: ['math', 'AI', 'computer science', 'finance', 'philosophy'],
+  interestsBlurb:
+    'I recharge and find clarity by immersing myself in math, AI, computer science, and finance, with a healthy dose of philosophy on the side ;)',
   contactBlurb:
     'If you want to talk about AI, machine learning, systems, or ambitious ideas worth building, feel free to reach out :)',
   cv: {
