@@ -67,6 +67,13 @@ export const blogCollections: Record<
 };
 
 const postConfigByUrl: Record<string, BlogConfig> = {
+  'https://medium.com/@tsnsenthil01/git-worktrees-the-essential-git-feature-many-developers-still-do-not-use-ae6a8c547289': {
+    slug: 'git-worktrees-the-essential-git-feature-many-developers-still-do-not-use',
+    category: 'tech',
+    categoryLabel: blogCollections.tech.label,
+    collectionTitle: blogCollections.tech.title,
+    collectionBlurb: blogCollections.tech.blurb,
+  },
   'https://medium.com/@tsnsenthil01/google-analytics-worked-on-localhost-but-failed-on-github-pages-heres-what-i-learned-577ed97374cd': {
     slug: 'google-analytics-worked-on-localhost-but-failed-on-github-pages-heres-what-i-learned',
     category: 'tech',
