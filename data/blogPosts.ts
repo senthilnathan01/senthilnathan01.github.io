@@ -16,6 +16,7 @@ type BlogConfig = {
   categoryLabel: string;
   collectionTitle: string;
   collectionBlurb: string;
+  summaryOverride?: string;
   seriesPart?: number;
   introHtml?: string;
   removeSnippets?: string[];
@@ -73,6 +74,8 @@ const postConfigByUrl: Record<string, BlogConfig> = {
     categoryLabel: blogCollections.tech.label,
     collectionTitle: blogCollections.tech.title,
     collectionBlurb: blogCollections.tech.blurb,
+    summaryOverride:
+      'But there is a feature that quietly solves one of the most common sources of friction in everyday development. Many developers have heard about it. Very few actually use it in practice.',
   },
   'https://medium.com/@tsnsenthil01/google-analytics-worked-on-localhost-but-failed-on-github-pages-heres-what-i-learned-577ed97374cd': {
     slug: 'google-analytics-worked-on-localhost-but-failed-on-github-pages-heres-what-i-learned',
@@ -342,7 +345,7 @@ function mapBlogPost(rawPost: RawBlogPost): BlogPost {
     publishedAt: rawPost.publishedAt,
     dateLabel: dateFormatter.format(new Date(rawPost.publishedAt)),
     heroImage: rawPost.heroImage,
-    summary: extractSummary(rawPost.contentHtml),
+    summary: config.summaryOverride ?? extractSummary(rawPost.contentHtml),
     contentHtml: buildContentHtml(rawPost.contentHtml, config.slug, config),
     category: config.category,
     categoryLabel: config.categoryLabel,
