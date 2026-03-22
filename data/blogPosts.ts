@@ -17,6 +17,7 @@ type BlogConfig = {
   collectionTitle: string;
   collectionBlurb: string;
   summaryOverride?: string;
+  sortOrder?: number;
   seriesPart?: number;
   introHtml?: string;
   removeSnippets?: string[];
@@ -41,6 +42,7 @@ export type BlogPost = {
   categoryLabel: string;
   collectionTitle: string;
   collectionBlurb: string;
+  sortOrder?: number;
   seriesPart?: number;
 };
 
@@ -222,6 +224,7 @@ const postConfigByUrl: Record<string, BlogConfig> = {
     categoryLabel: blogCollections['non-tech'].label,
     collectionTitle: blogCollections['non-tech'].title,
     collectionBlurb: blogCollections['non-tech'].blurb,
+    sortOrder: 1,
   },
   'https://medium.com/@tsnsenthil01/why-real-change-needs-a-bridge-between-who-you-are-and-who-you-want-to-become-88cf14e46c40': {
     slug: 'why-real-change-needs-a-bridge-between-who-you-are-and-who-you-want-to-become',
@@ -229,9 +232,10 @@ const postConfigByUrl: Record<string, BlogConfig> = {
     categoryLabel: blogCollections['non-tech'].label,
     collectionTitle: blogCollections['non-tech'].title,
     collectionBlurb: blogCollections['non-tech'].blurb,
+    sortOrder: 2,
     replacements: [
       {
-        from: 'joy became the key to greatness',
+        from: 'joy is the key to greatness',
         toSlug: 'joy-is-the-key-to-greatness',
       },
     ],
@@ -351,6 +355,7 @@ function mapBlogPost(rawPost: RawBlogPost): BlogPost {
     categoryLabel: config.categoryLabel,
     collectionTitle: config.collectionTitle,
     collectionBlurb: config.collectionBlurb,
+    sortOrder: config.sortOrder,
     seriesPart: config.seriesPart,
   };
 }
@@ -380,7 +385,13 @@ export function getFeaturedPosts(category: BlogCategory, count: number) {
 export function getAdjacentPosts(post: BlogPost) {
   const categoryPosts = getBlogPostsByCategory(post.category)
     .slice()
-    .sort((left, right) => new Date(left.publishedAt).getTime() - new Date(right.publishedAt).getTime());
+    .sort((left, right) => {
+      if (left.sortOrder !== undefined || right.sortOrder !== undefined) {
+        return (left.sortOrder ?? Number.MAX_SAFE_INTEGER) - (right.sortOrder ?? Number.MAX_SAFE_INTEGER);
+      }
+
+      return new Date(left.publishedAt).getTime() - new Date(right.publishedAt).getTime();
+    });
 
   const index = categoryPosts.findIndex((entry) => entry.slug === post.slug);
 
