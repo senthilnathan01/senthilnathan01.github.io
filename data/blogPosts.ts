@@ -216,6 +216,13 @@ const postConfigByUrl: Record<string, BlogConfig> = {
     introHtml:
       '<p>Check out <a href="/blog/part-6-evals-optimization-and-organizational-reality-what-actually-determines-success">Part 6: Evals, Optimization and Organizational Reality (What Actually Determines Success)</a> here.</p>',
   },
+  'https://medium.com/@tsnsenthil01/joy-is-the-key-to-greatness-a186739f9b1c': {
+    slug: 'joy-is-the-key-to-greatness',
+    category: 'non-tech',
+    categoryLabel: blogCollections['non-tech'].label,
+    collectionTitle: blogCollections['non-tech'].title,
+    collectionBlurb: blogCollections['non-tech'].blurb,
+  },
   'https://medium.com/@tsnsenthil01/why-real-change-needs-a-bridge-between-who-you-are-and-who-you-want-to-become-88cf14e46c40': {
     slug: 'why-real-change-needs-a-bridge-between-who-you-are-and-who-you-want-to-become',
     category: 'non-tech',
@@ -228,13 +235,6 @@ const postConfigByUrl: Record<string, BlogConfig> = {
         toSlug: 'joy-is-the-key-to-greatness',
       },
     ],
-  },
-  'https://medium.com/@tsnsenthil01/joy-is-the-key-to-greatness-a186739f9b1c': {
-    slug: 'joy-is-the-key-to-greatness',
-    category: 'non-tech',
-    categoryLabel: blogCollections['non-tech'].label,
-    collectionTitle: blogCollections['non-tech'].title,
-    collectionBlurb: blogCollections['non-tech'].blurb,
   },
 };
 
