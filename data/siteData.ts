@@ -86,7 +86,7 @@ export const siteData = {
   ] as NavItem[],
   links: [
     { label: 'github', href: 'https://github.com/senthilnathan01', note: '@senthilnathan01' },
-    { label: 'linkedin', href: 'https://linkedin.com/in/senthilnathan_t', note: '@senthilnathan_t' },
+    { label: 'linkedin', href: 'https://linkedin.com/in/senthilnathan-t', note: '@senthilnathan-t' },
     { label: 'x', href: 'https://x.com/cybersenth', note: '@cybersenth' },
     { label: 'email', href: 'mailto:tsnsenthil01@gmail.com', note: 'tsnsenthil01@gmail.com' },
   ] as LinkItem[],
