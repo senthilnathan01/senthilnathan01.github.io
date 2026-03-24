@@ -6,6 +6,7 @@ import { blogCollections, getBlogPostsByCategory } from '@/data/blogPosts';
 
 export default function NonTechBlogPage() {
   const posts = getBlogPostsByCategory('non-tech');
+  const postCount = posts.length;
 
   return (
     <main className="space-y-8">
@@ -22,6 +23,7 @@ export default function NonTechBlogPage() {
             <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-300 sm:text-base">
               {blogCollections['non-tech'].blurb}
             </p>
+            <p className="mt-3 text-xs uppercase tracking-[0.18em] text-zinc-500">{postCount} non-tech articles</p>
           </div>
         </section>
 

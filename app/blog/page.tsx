@@ -3,11 +3,13 @@ import { BlogCard, BlogPlaceholderCard } from '@/components/BlogCard';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
-import { blogCollections, getFeaturedPosts } from '@/data/blogPosts';
+import { blogCollections, getBlogPostsByCategory, getFeaturedPosts } from '@/data/blogPosts';
 
 export default function BlogPage() {
   const featuredTechPosts = getFeaturedPosts('tech', 3);
   const featuredNonTechPosts = getFeaturedPosts('non-tech', 3);
+  const techPostCount = getBlogPostsByCategory('tech').length;
+  const nonTechPostCount = getBlogPostsByCategory('non-tech').length;
   const nonTechPlaceholders = Math.max(0, 3 - featuredNonTechPosts.length);
 
   return (
@@ -23,12 +25,13 @@ export default function BlogPage() {
               </p>
               <h2 className="text-2xl text-zinc-100">{blogCollections.tech.title}</h2>
               <p className="max-w-2xl text-sm leading-7 text-zinc-400">{blogCollections.tech.blurb}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{techPostCount} tech articles</p>
             </div>
             <Link
               href="/blog/tech"
               className="inline-block text-sm text-emerald-300 transition hover:text-emerald-200 md:text-right"
             >
-              See all tech posts ↗
+              Show more tech posts ({techPostCount}) ↗
             </Link>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
@@ -46,12 +49,13 @@ export default function BlogPage() {
               </p>
               <h2 className="text-2xl text-zinc-100">{blogCollections['non-tech'].title}</h2>
               <p className="max-w-2xl text-sm leading-7 text-zinc-400">{blogCollections['non-tech'].blurb}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{nonTechPostCount} non-tech articles</p>
             </div>
             <Link
               href="/blog/non-tech"
               className="inline-block text-sm text-emerald-300 transition hover:text-emerald-200 md:text-right"
             >
-              See all beyond-tech posts ↗
+              Show more beyond-tech posts ({nonTechPostCount}) ↗
             </Link>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
