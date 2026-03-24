@@ -70,6 +70,13 @@ export const blogCollections: Record<
 };
 
 const postConfigByUrl: Record<string, BlogConfig> = {
+  'https://medium.com/@tsnsenthil01/vllm-a-more-efficient-way-to-serve-large-language-models-053c98b6543a': {
+    slug: 'vllm-a-more-efficient-way-to-serve-large-language-models',
+    category: 'tech',
+    categoryLabel: blogCollections.tech.label,
+    collectionTitle: blogCollections.tech.title,
+    collectionBlurb: blogCollections.tech.blurb,
+  },
   'https://medium.com/@tsnsenthil01/git-worktrees-the-essential-git-feature-many-developers-still-do-not-use-ae6a8c547289': {
     slug: 'git-worktrees-the-essential-git-feature-many-developers-still-do-not-use',
     category: 'tech',
