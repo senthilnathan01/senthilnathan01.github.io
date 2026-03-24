@@ -70,7 +70,7 @@ export const siteData = {
   profileFacts: [
     { label: 'name', value: 'Senthilnathan' },
     { label: 'role', value: 'Applied AI Engineer' },
-    { label: 'company', value: 'Loading...' },
+    { label: 'company', value: 'Stay Tuned!' },
     { label: 'previously', value: 'Featurely AI, Caterpillar, ...' },
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
   ] as ProfileFact[],
