@@ -138,6 +138,13 @@ export const siteData = {
     'Selected technical projects I want to feature right now.',
   projects: [
     {
+      title: 'OpenAI Parameter Golf Challenge',
+      description:
+        'Parameter Golf, a research challenge focused on minimizing held-out loss under a 16 MB artifact limit and a 10-minute training budget on 8xH100s.',
+      stack: ['OpenAI', 'LLM Efficiency', 'Research Challenge'],
+      href: 'https://senthilnathan01.github.io/research-garden/projects/open-ai-challenge-parameter-golf/',
+    },
+    {
       title: 'Implementation of Custom Deep Learning Architectures for Computer Vision',
       description:
         'Built a broad computer vision portfolio spanning neural style transfer, YOLOv2 vehicle detection, FaceNet-style recognition, U-Net segmentation, ResNet50 classification, and CNN-based visual classifiers.',

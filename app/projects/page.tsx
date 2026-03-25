@@ -43,7 +43,7 @@ export default function ProjectsPage() {
                   rel="noreferrer"
                   className="inline-flex text-sm text-emerald-300 transition hover:text-emerald-200"
                 >
-                  Open repository
+                  Open project
                 </Link>
               </li>
             ))}
