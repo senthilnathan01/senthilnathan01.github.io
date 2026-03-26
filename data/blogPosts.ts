@@ -70,6 +70,13 @@ export const blogCollections: Record<
 };
 
 const postConfigByUrl: Record<string, BlogConfig> = {
+  'https://medium.com/@tsnsenthil01/why-crypto-has-not-beaten-wall-street-yet-and-why-that-question-might-be-wrong-0f2b8a8c0f56': {
+    slug: 'why-crypto-has-not-beaten-wall-street-yet-and-why-that-question-might-be-wrong',
+    category: 'tech',
+    categoryLabel: blogCollections.tech.label,
+    collectionTitle: blogCollections.tech.title,
+    collectionBlurb: blogCollections.tech.blurb,
+  },
   'https://medium.com/@tsnsenthil01/vllm-a-more-efficient-way-to-serve-large-language-models-053c98b6543a': {
     slug: 'vllm-a-more-efficient-way-to-serve-large-language-models',
     category: 'tech',
