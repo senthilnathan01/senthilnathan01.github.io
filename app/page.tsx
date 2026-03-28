@@ -36,11 +36,11 @@ export default function Home() {
           </div>
         </CommandSection>
 
-        <CommandSection command="cat about.txt">
+        <CommandSection command="cat current_status.txt">
           <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 px-4 py-3 sm:px-5 sm:py-4">
             <div className="space-y-2">
               {siteData.summary ? <p className="text-base text-zinc-100">{siteData.summary}</p> : null}
-              {siteData.about.map((paragraph) => (
+              {siteData.current_status.map((paragraph) => (
                 <p key={paragraph} className="text-zinc-100">
                   {paragraph}
                 </p>

@@ -30,7 +30,7 @@ export type ProjectItem = {
   href: string;
 };
 
-export type PrincipleItem = {
+export type AboutItem = {
   title: string;
   description: string;
 };
@@ -74,13 +74,13 @@ export const siteData = {
     { label: 'previously', value: 'Featurely AI, Caterpillar, ...' },
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
   ] as ProfileFact[],
-  about: ['Currently I am learning inference engineering and also building for agents.'],
+  current_status: ['LLM Research, Inference engineering, System Design'],
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Blog', href: '/blog' },
     { label: 'Experience', href: '/experience' },
     { label: 'Projects', href: '/projects' },
-    { label: 'Principles', href: '/principles' },
+    { label: 'About', href: '/about' },
     { label: 'CV', href: '/cv/senthilnathan_t.pdf' },
     { label: 'Contact', href: '/contact' },
   ] as NavItem[],
@@ -161,7 +161,7 @@ export const siteData = {
   ] as ProjectItem[],
   growthPhilosophy:
     "I'm all about becoming my absolute best (I want to see what my full potential is). On a side note, I also believe broad capability matters because becoming exceptional in one domain usually requires getting strong across many.",
-  principles: [
+  about: [
     {
       title: 'Embrace bold risks',
       description:
@@ -177,7 +177,7 @@ export const siteData = {
       description:
         'My natural, boundless curiosity about everything is my fundamental driving force. It keeps me exploring new ideas, new domains, and better ways to think and build.',
     },
-  ] as PrincipleItem[],
+  ] as AboutItem[],
   interestsBlurb:
     'I recharge and find clarity by immersing myself in math, AI, computer science, and finance, with a healthy dose of philosophy on the side ;)',
   contactBlurb:

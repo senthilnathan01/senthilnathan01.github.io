@@ -58,7 +58,7 @@ This project currently includes:
 - Blog
 - Experience
 - Projects
-- Principles
+- About
 - Research
 - Contact
 - Downloadable CV
@@ -72,7 +72,7 @@ Most editable site content lives in `data/siteData.ts`, including:
 - social/contact links
 - experience
 - projects
-- principles
+- about
 - research and update placeholders
 
 Blog content is assembled from:
