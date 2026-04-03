@@ -97,4 +97,5 @@ To deploy:
 
 - `next.config.ts` enables static export and unoptimized images for GitHub Pages compatibility.
 - The home portrait is served from prebuilt AVIF/WebP/JPEG assets in `public/images/` so GitHub Pages can use modern formats without relying on runtime image optimization.
+- The UI defaults to dark mode, includes a manual light/dark toggle in the header, and stores the visitor's choice in `localStorage`.
 - Because this is a static export, features that require a live Next.js server, such as API routes or middleware, will not work on GitHub Pages without a different hosting setup.

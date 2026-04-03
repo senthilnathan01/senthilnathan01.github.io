@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       <SiteHeader />
       <TerminalWindow title="session://projects">
         <CommandSection command="cat projects.txt" withCursor>
-          <p className="command-blurb text-zinc-300">{siteData.projectsIntro}</p>
+          <p className="command-blurb content-body">{siteData.projectsIntro}</p>
         </CommandSection>
 
         <CommandSection command="ls projects/">
@@ -26,15 +26,15 @@ export default function ProjectsPage() {
                 className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900/70 p-5"
               >
                 <div className="space-y-2">
-                  <h2 className="text-lg text-zinc-100">{project.title}</h2>
-                  <p className="text-zinc-400">{project.description}</p>
+                  <h2 className="content-title text-lg">{project.title}</h2>
+                  <p className="content-subtitle">{project.description}</p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">
                   {project.stack.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-amber-500/20 bg-amber-500/8 px-3 py-1.5 text-xs uppercase tracking-[0.16em] text-amber-100"
+                      className="accent-pill rounded-md border px-3 py-1.5 text-xs uppercase tracking-[0.16em]"
                     >
                       {tag}
                     </span>

@@ -21,8 +21,8 @@ export default function TechBlogPage() {
             <span className="text-emerald-400">$</span> find blog/tech -type f
           </p>
           <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">### {blogCollections.tech.title}</p>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-300 sm:text-base">{blogCollections.tech.blurb}</p>
+            <p className="content-accent-cool text-sm uppercase tracking-[0.24em]">### {blogCollections.tech.title}</p>
+            <p className="content-subtitle mt-4 max-w-3xl text-sm leading-7 sm:text-base">{blogCollections.tech.blurb}</p>
             <p className="mt-3 text-xs uppercase tracking-[0.18em] text-zinc-500">{postCount} tech articles</p>
           </div>
         </section>

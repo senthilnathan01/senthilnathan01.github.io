@@ -21,9 +21,9 @@ export default function ResearchPage() {
             <ul className="space-y-5">
               {siteData.research.map((item) => (
                 <li key={item.title} className="space-y-2 border-l border-zinc-800 pl-4">
-                  <h2 className="text-zinc-100">{item.title}</h2>
+                  <h2 className="content-title">{item.title}</h2>
                   <p className="text-sm text-zinc-500">{item.venue} · {item.year}</p>
-                  <p className="text-zinc-300">{item.summary}</p>
+                  <p className="content-body">{item.summary}</p>
                   {item.href ? <Link href={item.href} className="text-sm text-emerald-300 hover:text-emerald-200">Read more ↗</Link> : null}
                 </li>
               ))}

@@ -40,7 +40,7 @@ export default function Home() {
                 <div key={fact.label} className="grid gap-1 text-zinc-300 sm:grid-cols-[92px_18px_minmax(0,1fr)]">
                   <dt className="text-zinc-500">{fact.label}</dt>
                   <span className="hidden text-zinc-700 sm:inline">:</span>
-                  <dd className={fact.label === 'role' ? 'text-amber-300' : 'text-zinc-100'}>{fact.value}</dd>
+                  <dd className={fact.label === 'role' ? 'content-accent-warm' : 'content-title'}>{fact.value}</dd>
                 </div>
               ))}
             </dl>
@@ -50,9 +50,9 @@ export default function Home() {
         <CommandSection command="cat current_status.txt">
           <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 px-4 py-3 sm:px-5 sm:py-4">
             <div className="space-y-2">
-              {siteData.summary ? <p className="text-base text-zinc-100">{siteData.summary}</p> : null}
+              {siteData.summary ? <p className="content-title text-base">{siteData.summary}</p> : null}
               {siteData.current_status.map((paragraph) => (
-                <p key={paragraph} className="text-zinc-100">
+                <p key={paragraph} className="content-body">
                   {paragraph}
                 </p>
               ))}

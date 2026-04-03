@@ -64,11 +64,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <span className="text-zinc-300">{post.dateLabel}</span>
             </div>
             <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">
+              <p className="content-accent-cool text-sm uppercase tracking-[0.24em]">
                 ### {post.seriesPart ? `Part ${post.seriesPart} of 7` : post.categoryLabel}
               </p>
-              <h1 className="max-w-4xl text-3xl leading-tight text-zinc-100 sm:text-4xl">{post.title}</h1>
-              <p className="max-w-3xl text-base leading-8 text-zinc-400">{post.summary}</p>
+              <h1 className="content-title max-w-4xl text-3xl leading-tight sm:text-4xl">{post.title}</h1>
+              <p className="content-subtitle max-w-3xl text-base leading-8">{post.summary}</p>
             </div>
           </div>
 
@@ -100,8 +100,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-5 transition hover:border-zinc-700 hover:text-emerald-300"
               >
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Previous</p>
-                <h2 className="mt-2 text-lg text-zinc-100">{previous.title}</h2>
-                <p className="mt-2 text-sm leading-7 text-zinc-400">{previous.summary}</p>
+                <h2 className="content-title mt-2 text-lg">{previous.title}</h2>
+                <p className="content-subtitle mt-2 text-sm leading-7">{previous.summary}</p>
               </Link>
             ) : (
               <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/35 p-5 text-zinc-600">
@@ -115,8 +115,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-5 transition hover:border-zinc-700 hover:text-emerald-300"
               >
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Next</p>
-                <h2 className="mt-2 text-lg text-zinc-100">{next.title}</h2>
-                <p className="mt-2 text-sm leading-7 text-zinc-400">{next.summary}</p>
+                <h2 className="content-title mt-2 text-lg">{next.title}</h2>
+                <p className="content-subtitle mt-2 text-sm leading-7">{next.summary}</p>
               </Link>
             ) : (
               <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/35 p-5 text-zinc-600">

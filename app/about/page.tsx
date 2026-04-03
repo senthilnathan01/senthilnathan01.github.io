@@ -15,7 +15,7 @@ export default function AboutPage() {
       <TerminalWindow title="session://about">
         <CommandSection command="cat growth-philosophy.txt" withCursor>
           <div className="w-full rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5">
-            <p className="command-blurb text-zinc-100">{siteData.growthPhilosophy}</p>
+            <p className="command-blurb content-title">{siteData.growthPhilosophy}</p>
           </div>
         </CommandSection>
 
@@ -26,8 +26,8 @@ export default function AboutPage() {
                 key={about.title}
                 className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5"
               >
-                <h2 className="text-lg text-amber-200">{about.title}</h2>
-                <p className="mt-2 text-zinc-100/90">{about.description}</p>
+                <h2 className="content-accent-warm text-lg">{about.title}</h2>
+                <p className="content-body mt-2">{about.description}</p>
               </li>
             ))}
           </ul>
@@ -35,7 +35,7 @@ export default function AboutPage() {
 
         <CommandSection command="cat interests.txt">
           <div className="w-full rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5">
-            <p className="command-blurb text-zinc-100">{siteData.interestsBlurb}</p>
+            <p className="command-blurb content-title">{siteData.interestsBlurb}</p>
           </div>
         </CommandSection>
       </TerminalWindow>

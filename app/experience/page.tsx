@@ -15,7 +15,7 @@ export default function ExperiencePage() {
       <SiteHeader />
       <TerminalWindow title="session://experience">
         <CommandSection command="cat experience.txt" withCursor>
-          <p className="command-blurb text-zinc-300">{siteData.experienceIntro}</p>
+          <p className="command-blurb content-body">{siteData.experienceIntro}</p>
         </CommandSection>
 
         <CommandSection command="ls experience/">
@@ -26,14 +26,14 @@ export default function ExperiencePage() {
                 className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900/70 p-5"
               >
                 <div className="space-y-2">
-                  <h2 className="text-lg text-zinc-100">{item.role}</h2>
+                  <h2 className="content-title text-lg">{item.role}</h2>
                   <p className="text-sm text-zinc-500">
                     {item.company} · {item.location} · {item.period}
                   </p>
-                  <p className="text-zinc-300">{item.description}</p>
+                  <p className="content-body">{item.description}</p>
                 </div>
 
-                <ul className="space-y-2 text-sm leading-6 text-zinc-400">
+                <ul className="content-subtitle space-y-2 text-sm leading-6">
                   {item.highlights.map((highlight) => (
                     <li key={highlight}>- {highlight}</li>
                   ))}

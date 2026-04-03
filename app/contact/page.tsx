@@ -15,7 +15,7 @@ export default function ContactPage() {
       <SiteHeader />
       <TerminalWindow title="session://contact">
         <CommandSection command="ping senthil" withCursor>
-          <p className="command-blurb text-zinc-300">{siteData.contactBlurb}</p>
+          <p className="command-blurb content-body">{siteData.contactBlurb}</p>
         </CommandSection>
 
         <CommandSection command="cat contacts.txt">

@@ -24,8 +24,8 @@ export function LinkList({ items }: LinkListProps) {
             target={item.href.startsWith('http') || item.href.endsWith('.pdf') ? '_blank' : undefined}
             rel={item.href.startsWith('http') || item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
           >
-            <span className="text-zinc-100 transition group-hover:text-emerald-200">{item.label}</span>
-            {item.note ? <span className="mt-1 block text-xs text-zinc-500">{item.note}</span> : null}
+            <span className="content-title transition group-hover:text-emerald-200">{item.label}</span>
+            {item.note ? <span className="content-muted mt-1 block text-xs">{item.note}</span> : null}
           </Link>
         </li>
       ))}
