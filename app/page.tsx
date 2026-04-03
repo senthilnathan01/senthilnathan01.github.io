@@ -1,10 +1,16 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CommandSection } from '@/components/CommandSection';
 import { LinkList } from '@/components/LinkList';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { siteData } from '@/data/siteData';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Senthilnathan | Home',
+  },
+};
 
 export default function Home() {
   return (
@@ -55,7 +61,6 @@ export default function Home() {
           </div>
         </CommandSection>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

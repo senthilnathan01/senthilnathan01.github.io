@@ -1,9 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BlogCard, BlogPlaceholderCard } from '@/components/BlogCard';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { blogCollections, getBlogPostsByCategory, getFeaturedPosts } from '@/data/blogPosts';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+};
 
 export default function BlogPage() {
   const featuredTechPosts = getFeaturedPosts('tech', 3);
@@ -72,7 +76,6 @@ export default function BlogPage() {
           </div>
         </section>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

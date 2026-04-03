@@ -35,12 +35,6 @@ export type AboutItem = {
   description: string;
 };
 
-export type UpdateItem = {
-  date: string;
-  text: string;
-  href?: string;
-};
-
 export type PostItem = {
   title: string;
   date: string;
@@ -58,15 +52,8 @@ export type ResearchItem = {
 
 export const siteData = {
   brand: '~/senthil',
-  name: 'Senthilnathan',
-  role: 'Applied AI Engineer',
   status: 'building practical AI systems',
   summary: '',
-  focusAreas: [
-    'applied machine learning',
-    'LLMs',
-    'statistical modeling',
-  ],
   profileFacts: [
     { label: 'name', value: 'Senthilnathan' },
     { label: 'role', value: 'Applied AI Engineer' },
@@ -186,7 +173,6 @@ export const siteData = {
     href: '/cv/senthilnathan_t.pdf',
     downloadName: 'senthilnathan_t.pdf',
   },
-  updates: [] as UpdateItem[],
   posts: [] as PostItem[],
   research: [] as ResearchItem[],
 };

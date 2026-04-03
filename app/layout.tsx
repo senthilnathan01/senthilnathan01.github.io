@@ -4,7 +4,10 @@ import './globals.css';
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
-  title: 'Senthilnathan | Applied AI Engineer',
+  title: {
+    default: 'Senthilnathan',
+    template: 'Senthilnathan | %s',
+  },
   description: 'Terminal-inspired portfolio for Senthilnathan, an Applied AI Engineer.',
   icons: {
     icon: '/images/profile.jpg',

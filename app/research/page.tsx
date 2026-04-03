@@ -1,8 +1,12 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { siteData } from '@/data/siteData';
+
+export const metadata: Metadata = {
+  title: 'Research',
+};
 
 export default function ResearchPage() {
   return (
@@ -29,7 +33,6 @@ export default function ResearchPage() {
           )}
         </section>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

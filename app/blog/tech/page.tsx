@@ -1,8 +1,12 @@
+import type { Metadata } from 'next';
 import { BlogCard } from '@/components/BlogCard';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { blogCollections, getBlogPostsByCategory } from '@/data/blogPosts';
+
+export const metadata: Metadata = {
+  title: 'Tech Blog',
+};
 
 export default function TechBlogPage() {
   const posts = getBlogPostsByCategory('tech');
@@ -29,7 +33,6 @@ export default function TechBlogPage() {
           ))}
         </section>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

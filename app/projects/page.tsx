@@ -1,9 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CommandSection } from '@/components/CommandSection';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { siteData } from '@/data/siteData';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+};
 
 export default function ProjectsPage() {
   return (
@@ -11,7 +15,7 @@ export default function ProjectsPage() {
       <SiteHeader />
       <TerminalWindow title="session://projects">
         <CommandSection command="cat projects.txt" withCursor>
-          <p className="max-w-3xl text-zinc-300">{siteData.projectsIntro}</p>
+          <p className="command-blurb text-zinc-300">{siteData.projectsIntro}</p>
         </CommandSection>
 
         <CommandSection command="ls projects/">
@@ -50,7 +54,6 @@ export default function ProjectsPage() {
           </ul>
         </CommandSection>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { blogCollections, getAdjacentPosts, getAllBlogPosts, getBlogPost } from '@/data/blogPosts';
@@ -28,7 +27,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: `${post.title} | Senthilnathan`,
+    title: post.title,
     description: post.summary,
   };
 }
@@ -127,7 +126,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </section>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

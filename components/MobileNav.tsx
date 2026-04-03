@@ -6,9 +6,22 @@ import { NavItem } from '@/data/siteData';
 
 type MobileNavProps = {
   items: NavItem[];
+  pathname: string;
 };
 
-export function MobileNav({ items }: MobileNavProps) {
+function isActivePath(itemHref: string, pathname: string) {
+  if (itemHref === '/') {
+    return pathname === '/';
+  }
+
+  if (itemHref.endsWith('.pdf')) {
+    return false;
+  }
+
+  return pathname === itemHref || pathname.startsWith(`${itemHref}/`);
+}
+
+export function MobileNav({ items, pathname }: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -30,7 +43,10 @@ export function MobileNav({ items }: MobileNavProps) {
                   href={item.href}
                   target={item.href.endsWith('.pdf') ? '_blank' : undefined}
                   rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
-                  className="block text-zinc-300 transition hover:text-emerald-300"
+                  aria-current={isActivePath(item.href, pathname) ? 'page' : undefined}
+                  className={`block transition hover:text-emerald-300 ${
+                    isActivePath(item.href, pathname) ? 'text-emerald-300' : 'text-zinc-300'
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

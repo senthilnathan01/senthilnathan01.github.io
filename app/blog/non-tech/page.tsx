@@ -1,8 +1,12 @@
+import type { Metadata } from 'next';
 import { BlogCard } from '@/components/BlogCard';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { blogCollections, getBlogPostsByCategory } from '@/data/blogPosts';
+
+export const metadata: Metadata = {
+  title: 'Beyond Tech',
+};
 
 export default function NonTechBlogPage() {
   const posts = getBlogPostsByCategory('non-tech');
@@ -33,7 +37,6 @@ export default function NonTechBlogPage() {
           ))}
         </section>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

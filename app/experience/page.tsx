@@ -1,9 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CommandSection } from '@/components/CommandSection';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { siteData } from '@/data/siteData';
+
+export const metadata: Metadata = {
+  title: 'Experience',
+};
 
 export default function ExperiencePage() {
   return (
@@ -11,7 +15,7 @@ export default function ExperiencePage() {
       <SiteHeader />
       <TerminalWindow title="session://experience">
         <CommandSection command="cat experience.txt" withCursor>
-          <p className="max-w-3xl text-zinc-300">{siteData.experienceIntro}</p>
+          <p className="command-blurb text-zinc-300">{siteData.experienceIntro}</p>
         </CommandSection>
 
         <CommandSection command="ls experience/">
@@ -45,7 +49,6 @@ export default function ExperiencePage() {
           </Link>
         </CommandSection>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }

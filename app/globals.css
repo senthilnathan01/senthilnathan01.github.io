@@ -39,6 +39,12 @@ a {
   max-width: 72ch;
 }
 
+.command-blurb {
+  width: 100%;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
 .blog-content > * + * {
   margin-top: 1.15rem;
 }

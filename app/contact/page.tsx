@@ -1,9 +1,13 @@
+import type { Metadata } from 'next';
 import { LinkList } from '@/components/LinkList';
 import { CommandSection } from '@/components/CommandSection';
-import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
 import { siteData } from '@/data/siteData';
+
+export const metadata: Metadata = {
+  title: 'Contact',
+};
 
 export default function ContactPage() {
   return (
@@ -11,7 +15,7 @@ export default function ContactPage() {
       <SiteHeader />
       <TerminalWindow title="session://contact">
         <CommandSection command="ping senthil" withCursor>
-          <p className="max-w-2xl text-zinc-300">{siteData.contactBlurb}</p>
+          <p className="command-blurb text-zinc-300">{siteData.contactBlurb}</p>
         </CommandSection>
 
         <CommandSection command="cat contacts.txt">
@@ -20,7 +24,6 @@ export default function ContactPage() {
           </div>
         </CommandSection>
       </TerminalWindow>
-      <SiteFooter />
     </main>
   );
 }
