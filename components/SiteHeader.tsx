@@ -22,7 +22,7 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 -mx-5 flex items-start justify-between gap-4 border-b border-zinc-800 bg-zinc-950/88 px-5 py-4 backdrop-blur sm:-mx-8 sm:px-8">
+    <header className="sticky top-3 z-50 flex items-start justify-between gap-4 rounded-lg border border-zinc-800 bg-zinc-950/88 px-5 py-4 shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur sm:px-8">
       <div className="space-y-1">
         <Link href="/" className="content-title text-sm transition hover:text-emerald-300">
           {siteData.brand}
@@ -43,8 +43,8 @@ export function SiteHeader() {
                     target={item.href.endsWith('.pdf') ? '_blank' : undefined}
                     rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 ${
-                      isActive ? 'text-emerald-300' : 'hover:text-emerald-300'
+                    className={`nav-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 ${
+                      isActive ? 'nav-link--active' : ''
                     }`}
                   >
                     {item.label}

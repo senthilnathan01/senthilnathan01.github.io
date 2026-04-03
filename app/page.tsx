@@ -12,6 +12,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const homeLinks = siteData.nav
+    .filter((item) => item.href !== '/')
+    .map((item) => ({
+      label: item.label,
+      href: item.href,
+    }));
+
   return (
     <main className="space-y-8">
       <SiteHeader />
@@ -62,7 +69,7 @@ export default function Home() {
 
         <CommandSection command="cat links.txt">
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
-            <LinkList items={siteData.links} />
+            <LinkList items={homeLinks} />
           </div>
         </CommandSection>
       </TerminalWindow>

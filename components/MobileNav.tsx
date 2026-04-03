@@ -44,8 +44,8 @@ export function MobileNav({ items, pathname }: MobileNavProps) {
                   target={item.href.endsWith('.pdf') ? '_blank' : undefined}
                   rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
                   aria-current={isActivePath(item.href, pathname) ? 'page' : undefined}
-                  className={`block transition hover:text-emerald-300 ${
-                    isActivePath(item.href, pathname) ? 'text-emerald-300' : 'text-zinc-300'
+                  className={`nav-link nav-link--mobile ${
+                    isActivePath(item.href, pathname) ? 'nav-link--active' : 'content-body'
                   }`}
                   onClick={() => setOpen(false)}
                 >
