@@ -3,11 +3,12 @@ import { LinkItem } from '@/data/siteData';
 
 type LinkListProps = {
   items: LinkItem[];
+  gridClassName?: string;
 };
 
-export function LinkList({ items }: LinkListProps) {
+export function LinkList({ items, gridClassName }: LinkListProps) {
   return (
-    <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <ul className={`grid gap-3 ${gridClassName ?? 'sm:grid-cols-2 xl:grid-cols-4'}`}>
       {items.map((item) => (
         <li key={item.label} className="min-w-0">
           {/*

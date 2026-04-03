@@ -69,7 +69,7 @@ export default function Home() {
 
         <CommandSection command="cat links.txt">
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
-            <LinkList items={homeLinks} />
+            <LinkList items={homeLinks} gridClassName="sm:grid-cols-3 lg:grid-cols-6" />
           </div>
         </CommandSection>
       </TerminalWindow>
