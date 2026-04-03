@@ -21,7 +21,7 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="flex items-start justify-between gap-4 border-b border-zinc-800 pb-6">
+    <header className="sticky top-0 z-50 -mx-5 flex items-start justify-between gap-4 border-b border-zinc-800 bg-zinc-950/88 px-5 py-4 backdrop-blur sm:-mx-8 sm:px-8">
       <div className="space-y-1">
         <Link href="/" className="text-sm text-zinc-100 transition hover:text-emerald-300">
           {siteData.brand}

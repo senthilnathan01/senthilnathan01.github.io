@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { CommandSection } from '@/components/CommandSection';
 import { LinkList } from '@/components/LinkList';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -19,15 +18,21 @@ export default function Home() {
       <TerminalWindow title="session://home">
         <CommandSection command="whois senthil" withCursor>
           <div className="grid gap-6 md:grid-cols-[180px_minmax(0,1fr)]">
-            <div className="overflow-hidden rounded-md border border-zinc-800 bg-zinc-900">
-              <Image
-                src="/images/profile.jpg"
-                alt="Portrait of Senthilnathan"
-                width={360}
-                height={450}
-                className="h-full w-full object-cover"
-                priority
-              />
+            <div className="aspect-square overflow-hidden rounded-md border border-zinc-800 bg-zinc-900">
+              <picture className="block h-full w-full">
+                <source srcSet="/images/profile.avif" type="image/avif" />
+                <source srcSet="/images/profile.webp" type="image/webp" />
+                <img
+                  src="/images/profile.jpg"
+                  alt="Portrait of Senthilnathan"
+                  width={960}
+                  height={960}
+                  className="block h-full w-full object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </picture>
             </div>
 
             <dl className="space-y-3 text-sm sm:text-base">

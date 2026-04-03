@@ -10,9 +10,12 @@ export const metadata: Metadata = {
   },
   description: 'Terminal-inspired portfolio for Senthilnathan, an Applied AI Engineer.',
   icons: {
-    icon: '/images/profile.jpg',
-    shortcut: '/images/profile.jpg',
-    apple: '/images/profile.jpg',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 
