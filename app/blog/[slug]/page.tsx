@@ -67,8 +67,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="content-accent-cool text-sm uppercase tracking-[0.24em]">
                 ### {post.seriesPart ? `Part ${post.seriesPart} of 7` : post.categoryLabel}
               </p>
-              <h1 className="content-title max-w-4xl text-3xl leading-tight sm:text-4xl">{post.title}</h1>
-              <p className="content-subtitle max-w-3xl text-base leading-8">{post.summary}</p>
+              <h1 className="content-title text-3xl leading-tight sm:text-4xl">{post.title}</h1>
+              <p className="content-subtitle text-base leading-8">{post.summary}</p>
             </div>
           </div>
 

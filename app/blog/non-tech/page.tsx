@@ -24,7 +24,7 @@ export default function NonTechBlogPage() {
             <p className="content-accent-warm text-sm uppercase tracking-[0.24em]">
               ### {blogCollections['non-tech'].title}
             </p>
-            <p className="content-subtitle mt-4 max-w-3xl text-sm leading-7 sm:text-base">
+            <p className="content-subtitle mt-4 text-sm leading-7 sm:text-base">
               {blogCollections['non-tech'].blurb}
             </p>
             <p className="mt-3 text-xs uppercase tracking-[0.18em] text-zinc-500">{postCount} non-tech articles</p>

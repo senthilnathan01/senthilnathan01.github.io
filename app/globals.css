@@ -98,7 +98,7 @@ a {
 }
 
 .blog-content {
-  max-width: 72ch;
+  width: 100%;
 }
 
 .command-blurb {

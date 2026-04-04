@@ -28,7 +28,7 @@ export default function BlogPage() {
                 <span className="ml-1 inline-block h-4 w-2 animate-pulse bg-zinc-300 align-middle" aria-hidden="true" />
               </p>
               <h2 className="content-title text-2xl">{blogCollections.tech.title}</h2>
-              <p className="content-subtitle max-w-2xl text-sm leading-7">{blogCollections.tech.blurb}</p>
+              <p className="content-subtitle text-sm leading-7">{blogCollections.tech.blurb}</p>
               <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{techPostCount} tech articles</p>
             </div>
             <Link
@@ -52,7 +52,7 @@ export default function BlogPage() {
                 <span className="text-emerald-400">$</span> {blogCollections['non-tech'].indexCommand}
               </p>
               <h2 className="content-title text-2xl">{blogCollections['non-tech'].title}</h2>
-              <p className="content-subtitle max-w-2xl text-sm leading-7">{blogCollections['non-tech'].blurb}</p>
+              <p className="content-subtitle text-sm leading-7">{blogCollections['non-tech'].blurb}</p>
               <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{nonTechPostCount} non-tech articles</p>
             </div>
             <Link
