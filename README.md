@@ -34,7 +34,7 @@ Continue with:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [https://localhost:3000](https://localhost:3000).
 
 ## Visitor tracking
 
