@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const featuredTechPosts = getFeaturedPosts('tech', 3);
+  const featuredTechPosts = getFeaturedPosts('tech', 6);
   const featuredNonTechPosts = getFeaturedPosts('non-tech', 3);
   const techPostCount = getBlogPostsByCategory('tech').length;
   const nonTechPostCount = getBlogPostsByCategory('non-tech').length;
