@@ -70,6 +70,13 @@ export const blogCollections: Record<
 };
 
 const postConfigByUrl: Record<string, BlogConfig> = {
+  'https://medium.com/@tsnsenthil01/it-is-high-time-to-start-documenting-your-life-and-work-1380ff294bef': {
+    slug: 'it-is-high-time-to-start-documenting-your-life-and-work',
+    category: 'non-tech',
+    categoryLabel: blogCollections['non-tech'].label,
+    collectionTitle: blogCollections['non-tech'].title,
+    collectionBlurb: blogCollections['non-tech'].blurb,
+  },
   'https://medium.com/@tsnsenthil01/why-crypto-has-not-beaten-wall-street-yet-and-why-that-question-might-be-wrong-0f2b8a8c0f56': {
     slug: 'why-crypto-has-not-beaten-wall-street-yet-and-why-that-question-might-be-wrong',
     category: 'tech',
