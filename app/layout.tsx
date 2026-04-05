@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -53,6 +54,7 @@ export default function RootLayout({
       </head>
       <body className="bg-zinc-950 font-mono text-zinc-100 antialiased">
         <div className="mx-auto min-h-screen w-full max-w-5xl px-5 pb-8 sm:px-8 sm:pb-10">{children}</div>
+        <Analytics />
       </body>
     </html>
   );
