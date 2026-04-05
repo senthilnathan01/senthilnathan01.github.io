@@ -1,9 +1,12 @@
 import type { NextConfig } from 'next';
 
+const deployTarget = process.env.DEPLOY_TARGET ?? (process.env.VERCEL === '1' ? 'vercel' : 'github-pages');
+const isGitHubPages = deployTarget === 'github-pages';
+
 const nextConfig: NextConfig = {
-  output: 'export',
+  ...(isGitHubPages ? { output: 'export' } : {}),
   images: {
-    unoptimized: true,
+    unoptimized: isGitHubPages,
     remotePatterns: [
       {
         protocol: 'https',

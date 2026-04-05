@@ -1,6 +1,6 @@
 # Senthilnathan Portfolio
 
-Personal portfolio site with a terminal-inspired UI, built as a fully static Next.js app for GitHub Pages.
+Personal portfolio site with a terminal-inspired UI, built with Next.js and configured to deploy to both GitHub Pages and Vercel.
 
 ## Stack
 
@@ -8,7 +8,6 @@ Personal portfolio site with a terminal-inspired UI, built as a fully static Nex
 - React 19
 - TypeScript
 - Tailwind CSS 4
-- Static export via `output: 'export'`
 
 ## Local development
 
@@ -42,13 +41,18 @@ Google Analytics is wired in via `app/layout.tsx` and is enabled only when `NEXT
 
 For GitHub Pages deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` as a GitHub repository secret so the workflow can inject it during the static build.
 
+For Vercel deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the Vercel project environment variables.
+
 ## Production build
 
 ```bash
 npm run build
 ```
 
-The static export is generated in `out/`.
+Build output depends on the target:
+
+- GitHub Pages: static export in `out/`
+- Vercel: standard Next.js build output in `.next/`
 
 ## Site structure
 
@@ -84,18 +88,35 @@ Static assets live in `public/`, including the optimized profile portrait (`prof
 
 ## Deployment
 
-The site is configured for GitHub Pages with a GitHub Actions workflow at `.github/workflows/deploy.yml`.
+This repo supports both GitHub Pages and Vercel from the same codebase.
 
-To deploy:
+### GitHub Pages
 
 1. Push the repository to GitHub.
 2. In GitHub, open `Settings -> Pages`.
 3. Set the source to `GitHub Actions`.
 4. Push to `main` to trigger the build and deployment workflow.
 
+The workflow sets `DEPLOY_TARGET=github-pages`, which keeps static export enabled for Pages.
+
+### Vercel
+
+1. Push the repository to GitHub.
+2. Sign in to [Vercel](https://vercel.com/) and click `Add New -> Project`.
+3. Import this GitHub repository.
+4. In Vercel project settings, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` if you want Google Analytics enabled.
+5. Optional but explicit: add `DEPLOY_TARGET=vercel` as an environment variable. This is not strictly required because Vercel is auto-detected, but it makes the intended target obvious.
+6. Keep the framework preset as `Next.js`.
+7. Leave the output directory blank.
+8. Deploy.
+
+After that, Vercel will redeploy automatically on new pushes to the connected branch.
+
 ## Notes
 
-- `next.config.ts` enables static export and unoptimized images for GitHub Pages compatibility.
-- The home portrait is served from prebuilt AVIF/WebP/JPEG assets in `public/images/` so GitHub Pages can use modern formats without relying on runtime image optimization.
+- `next.config.ts` switches behavior by deployment target:
+- GitHub Pages uses static export and unoptimized images.
+- Vercel uses standard Next.js output and Next image optimization.
+- The home portrait is served from prebuilt AVIF/WebP/JPEG assets in `public/images/`.
 - The UI defaults to dark mode, includes a manual light/dark toggle in the header, and stores the visitor's choice in `localStorage`.
-- Because this is a static export, features that require a live Next.js server, such as API routes or middleware, will not work on GitHub Pages without a different hosting setup.
+- GitHub Pages still has static-hosting limits, so features like API routes or middleware would require Vercel or another server-capable host.
