@@ -70,6 +70,14 @@ export const blogCollections: Record<
 };
 
 const postConfigByUrl: Record<string, BlogConfig> = {
+  'https://medium.com/@tsnsenthil01/do-not-let-llm-costs-kill-a-good-idea-too-early-2bbc5b2bc105': {
+    slug: 'do-not-let-llm-costs-kill-a-good-idea-too-early',
+    category: 'non-tech',
+    categoryLabel: blogCollections['non-tech'].label,
+    collectionTitle: blogCollections['non-tech'].title,
+    collectionBlurb: blogCollections['non-tech'].blurb,
+    sortOrder: 3,
+  },
   'https://medium.com/@tsnsenthil01/it-is-high-time-to-start-documenting-your-life-and-work-1380ff294bef': {
     slug: 'it-is-high-time-to-start-documenting-your-life-and-work',
     category: 'non-tech',
