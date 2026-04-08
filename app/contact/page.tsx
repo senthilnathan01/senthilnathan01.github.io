@@ -14,7 +14,7 @@ export default function ContactPage() {
     <main className="space-y-8">
       <SiteHeader />
       <TerminalWindow title="session://contact">
-        <CommandSection command="ping senthil" withCursor>
+        <CommandSection command="ping nathan" withCursor>
           <p className="command-blurb content-body">{siteData.contactBlurb}</p>
         </CommandSection>
 

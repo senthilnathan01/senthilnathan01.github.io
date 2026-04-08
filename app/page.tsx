@@ -7,7 +7,7 @@ import { siteData } from '@/data/siteData';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Senthilnathan | Home',
+    absolute: 'Nathan | Home',
   },
 };
 
@@ -23,7 +23,7 @@ export default function Home() {
     <main className="space-y-8">
       <SiteHeader />
       <TerminalWindow title="session://home">
-        <CommandSection command="whois senthil" withCursor>
+        <CommandSection command="whois nathan" withCursor>
           <div className="grid gap-6 md:grid-cols-[180px_minmax(0,1fr)]">
             <div className="aspect-square overflow-hidden rounded-md border border-zinc-800 bg-zinc-900">
               <picture className="block h-full w-full">
@@ -31,7 +31,7 @@ export default function Home() {
                 <source srcSet="/images/profile.webp" type="image/webp" />
                 <img
                   src="/images/profile.jpg"
-                  alt="Portrait of Senthilnathan"
+                  alt="Portrait of Nathan"
                   width={960}
                   height={960}
                   className="block h-full w-full object-cover"

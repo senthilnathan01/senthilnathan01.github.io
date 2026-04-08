@@ -51,7 +51,7 @@ export type ResearchItem = {
 };
 
 export const siteData = {
-  brand: '~/senthil',
+  brand: '~/NATHAN',
   status: 'building practical AI systems',
   summary: '',
   profileFacts: [

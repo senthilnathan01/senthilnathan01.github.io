@@ -1,4 +1,4 @@
-# Senthilnathan Portfolio
+# Nathan's Portfolio
 
 Personal portfolio site with a terminal-inspired UI, built with Next.js and configured to deploy to both GitHub Pages and Vercel.
 

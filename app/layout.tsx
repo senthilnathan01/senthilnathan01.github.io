@@ -22,10 +22,10 @@ const themeBootstrapScript = `
 
 export const metadata: Metadata = {
   title: {
-    default: 'Senthilnathan',
-    template: 'Senthilnathan | %s',
+    default: 'Nathan',
+    template: 'Nathan | %s',
   },
-  description: 'Terminal-inspired portfolio for Senthilnathan, an Applied AI Engineer.',
+  description: 'Terminal-inspired portfolio for Nathan, an Applied AI Engineer.',
   icons: {
     icon: [
       { url: '/favicon.ico' },
