@@ -125,6 +125,13 @@ export const siteData = {
     'Selected technical projects I want to feature right now.',
   projects: [
     {
+      title: 'Fraud Ring Investigator Arena',
+      description:
+        'Built a compact OpenEnv benchmark for sequential fraud investigation, where agents inspect hidden financial networks, manage limited budget, place interventions, and reason about delayed outcomes across procedural cases.',
+      stack: ['Python', 'OpenEnv', 'RL Benchmark'],
+      href: 'https://github.com/senthilnathan01/fraud-ring-investigator-arena',
+    },
+    {
       title: 'OpenAI Parameter Golf Challenge',
       description:
         'Parameter Golf, a research challenge focused on minimizing held-out loss under a 16 MB artifact limit and a 10-minute training budget on 8xH100s.',
