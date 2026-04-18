@@ -1,0 +1,378 @@
+%-------------------------
+% Resume in Latex
+% Modified with Blue Theme
+%------------------------
+
+%---- Required Packages and Functions ----
+
+\documentclass[10pt, a4paper]{article}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+
+% Define custom blue color
+\definecolor{titleblue}{RGB}{41, 45, 120}
+
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{4.08003pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+
+\urlstyle{same}
+
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting - BLUE THEME
+% \titleformat{\section}{
+%   \vspace{-4pt}\color{titleblue}\scshape\raggedright\large
+% }{}{0em}{}[\color{titleblue}\titlerule \vspace{-7pt}]
+\titleformat{\section}{
+  \vspace{-4pt}\color{titleblue}\scshape\raggedright\normalsize
+}{}{0em}{}[\color{titleblue}\titlerule \vspace{-7pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{:\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textcolor{titleblue}{\textbf{#1}},\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textcolor{titleblue}{\textbf{#1}} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textcolor{titleblue}{\textbf{#1}} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProjectt}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textcolor{titleblue}{\textbf{#1}} & \footnotesize{#2}
+    \end{tabular*}
+    \vspace{-1.7mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=1ex, rightmargin=1ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}p{\dimexpr\linewidth-3.1cm\relax}}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+%---- End of Packages and Functions ------
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%
+%%%%%% DEFINE ELEMENTS HERE %%%%%%%
+\newcommand{\name}{Senthilnathan T}
+\newcommand{\roll}{ED21B057}
+\newcommand{\github}{senthilnathan01}
+\newcommand{\linkedin}{senthilnathan-t}
+
+\newcommand{\course}{B Tech in Engineering Design, M Tech in Biomedical Engineering}
+\newcommand{\phone}{7010975399}
+\newcommand{\emaila}{tsnsenthil01@gmail.com}
+\newcommand{\emailb}{ed21b057@smail.iitm.ac.in}
+
+\begin{document}
+\fontfamily{cmr}\selectfont
+%----------HEADING-----------------
+{
+\begin{tabular}{L r}
+  \textbf{\LARGE Senthilnathan T} \hspace{0.05cm} | \hspace{0.05cm} \href{https://senthilnathan01.github.io}{\textcolor{blue}{Website} \hspace{0.05cm} | \hspace{0.05cm} \href{https://www.linkedin.com/in/\linkedin}{\textcolor{blue}{LinkedIn}} \hspace{0.05cm} | \hspace{0.05cm} \href{https://github.com/\github}{\textcolor{blue}{GitHub} | \hspace{0.05cm} \href{mailto:\emaila}{\textcolor{blue}{\emaila}}}
+\end{tabular}
+}
+\vspace{1mm}
+\hrule
+\vspace{-3mm}
+
+%-----------EDUCATION-----------------
+\section{Education}
+\setlength{\tabcolsep}{5pt}
+
+\small{\begin{tabularx}
+{\dimexpr\textwidth-3mm\relax}{|C|c|c|c|}
+  \hline
+  \textbf{Program} & \textbf{Institute} & \textbf{CGPA/\%} & \textbf{Year}\\
+  \hline
+  Dual Degree (B Tech+M Tech) in Engineering Design
+  & Indian Institute of Technology Madras & 8.60/10.0 & 2026\\
+  \hline
+  Class XII (CBSE) & Velammal Bodhi Campus, Chennai & 98.2\% & 2021 \\
+  \hline
+  Class X (CBSE) & Velammal Bodhi Campus, Chennai & 95.8\% & 2019 \\
+  \hline
+\end{tabularx}}
+\vspace{-3mm}
+
+\section{Scholastic Achievements}
+ \resumeSubHeadingListStart
+ 
+  \item {\hspace{2mm}JEE Advanced 2021: \textbf{Top 1.5\%}(Among 2 Lakhs); JEE Mains 2021: \textbf{99.78\%}; National Entrance Screening Test 2021: \textbf{Rank 36}}
+  \vspace{-1mm}
+  \item {\hspace{2mm}National Standard Examination in Physics 2021: \textbf{State Topper}; International Olympiad of Mathematics 2021: \textbf{State rank 25}}
+  \vspace{-1mm}
+  \item {\hspace{2mm}Codeforces - \textbf{Specialist}; CodeChef - \textbf{3 Stars} (\textbf{Global Rank 35} in CodeChef Starters 202); Arithmetic Zetamac - \textbf{78 in 2 mins}}
+  \vspace{-1mm}
+
+\resumeSubHeadingListEnd
+
+ \vspace{-6mm}
+
+%-----------EXPERIENCE-----------------
+\section{Professional Experience}
+   \resumeSubHeadingListStart
+     \resumeSubheading
+       {Featurely AI}{San Francisco Bay Area Based}
+       {\textbf{Applied AI Intern}}{June 2025 - July 2025 (2 mos)}
+      \vspace{2mm}
+       \resumeItemListStart
+{- Featurely is a US AI startup backed by \textbf{Bling Capital}, whose partners have backed companies such as \textbf{Palantir} and \textbf{Lyft}.}\\
+{- Built an explainable \textbf{human-behavior simulation model} under data constraints using \textbf{LLMs}, \textbf{Probablistic Modelling}, \textbf{graph-based memory system} simulating user behavior, for faster, user-focused product development and feature prioritization.}\\
+{- Engineered \textbf{episodic memory system} (Neo4j, Pinecone) with recursive retrieval (\textbf{vector RAG and graph RAG}).}\\
+{- Deployed the system (\textbf{FastAPI + Docker} on \textbf{AWS EC2} backend; \textbf{Vercel} frontend), enabling remote testing by stakeholders.}
+% {- Had the privilege to work closely with \textbf{Mr.Krishna Namashivayam} (Founder/CEO, and ex-AI Products Lead at Meta, NVIDIA and Dropbox) and \textbf{Mr.Sowrabh} (CTO and ex-Prinicipal Software Engineering Manager at Microsoft and Google).}
+
+     \resumeItemListEnd
+\vspace{-1mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+     \resumeSubheading
+       {Caterpillar}{Chennai, India}
+       {\textbf{Machine Learning Intern, Global Data Science Team (Optimisation Pod)}}{Jan 2025 - May 2025 (5 mos)}
+      \vspace{2mm}
+       \resumeItemListStart
+       {- Developed \textbf{Multi-Agent Reinforcement Learning} dispatch system for mining fleets using \textbf{Proximal Policy Optimisation} algo.}\\
+       {- Engineered \textbf{multi-objective Reward Framework}: Productivity \textbf{8-10\%$\uparrow$}, truck congestions \textbf{30\%$\downarrow$}, power efficiency \textbf{10\%$\uparrow$}.}\\
+       {- Automated mine layout generation, cutting setup time from \textbf{hours to minutes} for rapid training (across 50+ site layouts).}
+     \resumeItemListEnd      
+   \resumeSubHeadingListEnd
+
+ \vspace{-6mm}
+
+\section{Research Experience}
+\resumeSubHeadingListStart
+
+    \resumeProjectt
+      {ADOPT Lab, IIT Madras}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- (\textbf{Patent} Applied) Proposed and evaluated a \textbf{topology-preserving synthetic tabular data generation} approach for scarce and non-convex datasets, demonstrating improved stability, downstream task utility and fidelity over standard baselines.}
+\resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+  \vspace{-6mm}
+
+%-----------PROJECTS-----------------
+\section{Projects}
+\resumeSubHeadingListStart
+    \resumeProjectt
+      {\href{https://github.com/senthilnathan01/fraud-ring-investigator-arena}{Fraud Ring Investigator Arena: RL Benchmark for Sequential Anti Money Laundering Investigation}}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- Built an \textbf{OpenEnv benchmark} for fraud triage with observability, action costs, delayed effects, and clear/escalate decisions.}\\
+{- Designed typed investigation/intervention actions with deterministic baselines on \textbf{easy/medium/hard} tracks for \textbf{RL agents}.} \\
+\resumeItemListEnd
+
+\vspace{-4mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+    \resumeProjectt
+      {End-to-End RL Fine-Tuning Pipeline for DeepSeek-7B using Custom Reward Modeling}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- Engineered a \textbf{Reinforcement Learning (GRPO) pipeline} to \textbf{fine-tune} a 7B LLM, implementing a custom reward function.}\\
+{- Optimized training efficiency using \textbf{gradient checkpointing} and \textbf{8-bit quantization} within the Hugging Face trl ecosystem.} \\
+\resumeItemListEnd
+
+\vspace{-4mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+   \resumeProjectt
+      {Efficient LLM Adaptation: QLoRA-based Supervised Fine-Tuning of DeepSeek-7B}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- Implemented \textbf{SFT}$^2$ using \textbf{LoRA}$^3$ adapters and 4-bit quantization (\textbf{QLoRA}$^4$) to specialize LLMs for mathematical reasoning.}\\
+{- Integrated \textbf{gradient accumulation and mixed-precision training} to enable \textbf{efficient large-model tuning on consumer-grade GPUs}.} \\
+\resumeItemListEnd
+
+\vspace{-4mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+   \resumeProjectt
+      {Productionizing LLMs: Quantization and Performance Profiling for Efficient Inference}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- Executed a model optimization pipeline reducing \textbf{memory footprint by 70\%} via 4-bit NF4 and Int8 \textbf{quantization} techniques.}\\
+{- Benchmarked \textbf{inference latency and throughput} across precision formats to identify optimal configurations for \textbf{edge deployment}.} \\
+\resumeItemListEnd
+
+\vspace{-4mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+    \resumeProjectt
+      {\href{https://github.com/senthilnathan01/my_ml_projects}{Implementation of Custom Deep Learning Architectures for Computer Vision}}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- Implemented \textbf{YOLOv2 for Car Detection}, using IoU$^5$/NMS$^6$ for real-time bounding boxes in \textbf{autonomous driving}.}\\
+{- Designed \textbf{U-Net for Semantic Segmentation}, achieving 80\% pixel accuracy on \textbf{object outlining tasks} (noisy data).} \\
+\resumeItemListEnd
+
+\vspace{-4mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+    \resumeProjectt
+      {\href{https://github.com/senthilnathan01/clinically-rag}{Clinically RAG: Chat-First Healthcare AI Research Assistant}}
+      {}
+      \vspace{4mm}
+\resumeItemListStart
+\vspace{1mm}
+{- Developed a \textbf{chat-first healthcare assistant} using \textbf{Next.js} with a \textbf{7-stage LangGraph} pipeline on a 21-article corpus.}\\
+{- Implemented \textbf{hybrid retrieval}, citation verification, and critic-based repair for \textbf{corpus-grounded} answers.} \\
+\resumeItemListEnd
+
+\vspace{-4mm}
+\noindent\leaders\hbox{--}\hfill \null
+\vspace{-2mm}
+
+    \resumeProjectt
+      {\href{https://github.com/senthilnathan01/prml-project}{Foundational Machine Learning and Statistical Modeling}}
+      {}
+      \vspace{1mm}
+\resumeItemListStart
+\vspace{1mm}
+\noindent \textcolor{titleblue}{\textbf{Supervised Learning Models}} \leaders\hbox{--}\hfill \null
+
+{- Implemented regression (\textbf{Ridge, Lasso}), on high-dim 2D data, achieving 99.5\% MSE reduction and 86\% feature sparsity.}\\
+{- Derived \textbf{Bayesian LDA/QDA$^7$ classifiers} with asymmetric loss on 2D (binary/multiclass) data, reducing errors by 72\%.}
+
+\vspace{0.85mm}
+\noindent \textcolor{titleblue}{\textbf{Unsupervised Learning Models}} \leaders\hbox{--}\hfill \null\\
+{- Implemented \textbf{clustering (DBSCAN, spectral)} for non-convex data, achieving 100\% visual purity via Laplacians.}\\
+{- Developed \textbf{Expectation Maximization} for \textbf{Gaussian Mixture Models} (ELBO-monitored cluster alignment) on 2D data.}
+\resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{Skills}
+ \resumeHeadingSkillStart
+ \item{\textbf{Programming:} C++, Python, SQL; \textbf{Tools:} Git, Docker, Redis, AWS, AirFlow,FastAPI, Neo4j, Pinecone}
+ \vspace{-2mm}
+ \item{\textbf{Utility Libraries:} {statsmodels, PyTorch, Tensorflow, Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Keras, SciPy}} 
+ \resumeHeadingSkillEnd
+\vspace{-3mm}
+
+\section{Extracurricular}
+      {\textbf{Tech Contingent} in \textbf{Inter IIT Tech Meet 13.0} (\textbf{Represented IITM} competing against \textbf{23 IITs}; Organised by \textbf{ISRO}): \\
+      - Generated a lunar map at sub-pixel resolution by analyzing X-ray fluorescence data from Chandrayaan-2's CLASS instrument.}
+
+\vspace{-3mm}
+
+\section{Relevant Courseworks}
+
+ \resumeSubHeadingListStart
+       \item {\hspace{2mm}Probability, Statistics and Stochastic Processes; Linear Algebra; Differential Equations; Series and Matrices}
+      \vspace{-1mm}
+      
+     \item {\hspace{2mm}Machine Learning and Deep Learning Specialisation*; Pattern Recognition and Machine Learning}
+      \vspace{-1mm}
+     \item {\hspace{2mm}Fine-tuning \& RL for LLMs: Intro to Post-training**; First Principles Tools; Data Analysis \& Visualization in R/Python/SQL}
+      \vspace{-1mm}
+      
+      \item {\hspace{2mm}Operations Research; Operations Management; Principles of Economics; Econometrics; Business Analytics} 
+      \vspace{-1mm}
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{Positions of Responsibility}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+\resumePOR{Core Team Member}
+    { Wellness Team, IIT Madras}
+    {Aug 2022 - May 2025 (3 yrs)}
+
+    \resumeItemListStart
+        {Managed a team of \textbf{50} coordinators; Led numerous wellness events; Offered peer counselling support to students.}
+    \resumeItemListEnd
+\vspace{-1mm}
+
+\resumePOR{Department Coordinator}
+    { Academic Mentorship Cell, IIT Madras}
+    {Sep 2023 - May 2024 (1 yr)}
+
+    \resumeItemListStart
+        {Facilitated academic journeys for \textbf{20} mentees by matching them with suitable mentors and monitoring mentees' progress.}
+    \resumeItemListEnd
+\vspace{-1mm}
+
+\resumeSubHeadingListEnd
+\vspace{-1mm}
+\hrule
+\vspace{1mm}
+{\scriptsize *- Stanford Online, **-DeepLearning.Ai, 1-Root Mean Squared Error, 2-Supervised Fine Tuning, 3-Low-Rank Adaptation, 4-Quantized Low-Rank Adaptation, 5-Intersection Over Union, 6-Non-Max Suppression, 7-Linear Discriminant Analysis/Quadratic Discriminant Analysis}
+
+\end{document}
