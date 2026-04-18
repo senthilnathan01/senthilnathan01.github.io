@@ -37,22 +37,37 @@ export function MobileNav({ items, pathname }: MobileNavProps) {
       {open ? (
         <nav className="mt-3 border border-zinc-800 bg-zinc-900/90 p-3" aria-label="Mobile">
           <ul className="space-y-2 text-sm">
-            {items.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  target={item.href.endsWith('.pdf') ? '_blank' : undefined}
-                  rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
-                  aria-current={isActivePath(item.href, pathname) ? 'page' : undefined}
-                  className={`nav-link nav-link--mobile ${
-                    isActivePath(item.href, pathname) ? 'nav-link--active' : 'content-body'
-                  }`}
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {items.map((item) => {
+              const isDocumentLink = item.href.endsWith('.pdf');
+              const isActive = isActivePath(item.href, pathname);
+              const linkClassName = `nav-link nav-link--mobile ${isActive ? 'nav-link--active' : 'content-body'}`;
+
+              return (
+                <li key={item.href}>
+                  {isDocumentLink ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-current={isActive ? 'page' : undefined}
+                      className={linkClassName}
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={linkClassName}
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
       ) : null}

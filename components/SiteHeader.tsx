@@ -35,20 +35,28 @@ export function SiteHeader() {
           <ul className="content-body flex flex-wrap items-center gap-5 text-sm">
             {siteData.nav.map((item) => {
               const isActive = isActivePath(item.href, pathname);
+              const isDocumentLink = item.href.endsWith('.pdf');
+              const linkClassName = `nav-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 ${
+                isActive ? 'nav-link--active' : ''
+              }`;
 
               return (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    target={item.href.endsWith('.pdf') ? '_blank' : undefined}
-                    rel={item.href.endsWith('.pdf') ? 'noreferrer' : undefined}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`nav-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400 ${
-                      isActive ? 'nav-link--active' : ''
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
+                  {isDocumentLink ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-current={isActive ? 'page' : undefined}
+                      className={linkClassName}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link href={item.href} aria-current={isActive ? 'page' : undefined} className={linkClassName}>
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               );
             })}

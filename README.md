@@ -39,9 +39,11 @@ Open [https://localhost:3000](https://localhost:3000).
 
 Google Analytics is wired in via `app/layout.tsx` and is enabled only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set.
 
+Vercel Web Analytics is also mounted from `app/layout.tsx`, but only for Vercel deployments. The GitHub Pages build skips it because the `/_vercel/insights/script.js` endpoint does not exist on the `*.github.io` domain.
+
 For GitHub Pages deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` as a GitHub repository secret so the workflow can inject it during the static build.
 
-For Vercel deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the Vercel project environment variables.
+For Vercel deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the Vercel project environment variables and enable Web Analytics in the Vercel project settings.
 
 ## Production build
 

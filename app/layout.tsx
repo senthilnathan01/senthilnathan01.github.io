@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
+const deployTarget = process.env.DEPLOY_TARGET ?? (process.env.VERCEL === '1' ? 'vercel' : 'github-pages');
+const isVercelDeployment = deployTarget === 'vercel';
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const themeBootstrapScript = `
   (() => {
@@ -54,7 +56,7 @@ export default function RootLayout({
       </head>
       <body className="bg-zinc-950 font-mono text-zinc-100 antialiased">
         <div className="mx-auto min-h-screen w-full max-w-5xl px-5 pb-8 sm:px-8 sm:pb-10">{children}</div>
-        <Analytics />
+        {isVercelDeployment ? <Analytics /> : null}
       </body>
     </html>
   );
