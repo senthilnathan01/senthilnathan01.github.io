@@ -1,64 +1,17 @@
 # Nathan's Portfolio
 
-Personal portfolio site with a terminal-inspired UI, built with Next.js and configured to deploy to both GitHub Pages and Vercel.
+Terminal-inspired personal portfolio built with Next.js App Router and deployed to both GitHub Pages and Vercel from the same codebase.
 
 ## Stack
 
-- Next.js 16 (App Router)
+- Next.js 16
 - React 19
 - TypeScript
 - Tailwind CSS 4
+- Vercel Web Analytics
+- Google Analytics 4
 
-## Local development
-
-```bash
-npm install
-```
-
-If you want analytics enabled locally, create `.env.local` from `.env.example` and set your Google Analytics measurement ID:
-
-```bash
-cp .env.example .env.local
-```
-
-Then update:
-
-```bash
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-```
-
-Continue with:
-
-```bash
-npm run dev
-```
-
-Open [https://localhost:3000](https://localhost:3000).
-
-## Visitor tracking
-
-Google Analytics is wired in via `app/layout.tsx` and is enabled only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set.
-
-Vercel Web Analytics is also mounted from `app/layout.tsx`, but only for Vercel deployments. The GitHub Pages build skips it because the `/_vercel/insights/script.js` endpoint does not exist on the `*.github.io` domain.
-
-For GitHub Pages deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` as a GitHub repository secret so the workflow can inject it during the static build.
-
-For Vercel deployment, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the Vercel project environment variables and enable Web Analytics in the Vercel project settings.
-
-## Production build
-
-```bash
-npm run build
-```
-
-Build output depends on the target:
-
-- GitHub Pages: static export in `out/`
-- Vercel: standard Next.js build output in `.next/`
-
-## Site structure
-
-This project currently includes:
+## What is in the site
 
 - Home
 - Blog
@@ -69,56 +22,178 @@ This project currently includes:
 - Contact
 - Downloadable CV
 
-## Content sources
+## Local development
 
-Most editable site content lives in `data/siteData.ts`, including:
+Install dependencies:
 
-- profile details
-- navigation
-- social/contact links
-- experience
-- projects
-- about
-- research and update placeholders
+```bash
+npm install
+```
 
-Blog content is assembled from:
+Create a local env file if you want Google Analytics enabled while developing:
 
-- `data/blogPosts.generated.json` for post payloads
-- `data/blogPosts.ts` for slugs, categories, labels, summaries, and link cleanup
+```bash
+cp .env.example .env.local
+```
 
-Static assets live in `public/`, including the optimized profile portrait (`profile.avif`, `profile.webp`, `profile.jpg` fallback), favicon files, and CV PDF.
+`.env.example` currently contains:
 
-## Deployment
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
 
-This repo supports both GitHub Pages and Vercel from the same codebase.
+Start the dev server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Commands
+
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
+
+Notes:
+
+- `npm run build` defaults to the GitHub Pages build behavior when run locally.
+- Use `DEPLOY_TARGET=vercel npm run build` if you want to locally simulate the Vercel-targeted build path.
+- `npm run start` is only useful after a non-export build, such as a Vercel-style local build.
+
+## Deployment model
+
+This repo supports two deployment targets.
 
 ### GitHub Pages
+
+GitHub Pages uses static export.
+
+- The GitHub Actions workflow is defined in `.github/workflows/deploy.yml`.
+- The workflow sets `DEPLOY_TARGET=github-pages`.
+- That enables `output: 'export'` in `next.config.ts`.
+- Exported files are written to `out/`.
+- Images are served unoptimized for compatibility with static hosting.
+
+### Vercel
+
+Vercel uses the standard Next.js build output.
+
+- Vercel is auto-detected through `process.env.VERCEL === '1'`.
+- You can also set `DEPLOY_TARGET=vercel` explicitly if you want the intent to be obvious.
+- Output stays in `.next/`.
+- Next image optimization remains enabled.
+
+## Analytics
+
+There are two analytics systems in the project.
+
+### Google Analytics
+
+Google Analytics is enabled only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set.
+
+- The external loader is injected from `app/layout.tsx`.
+- Initialization is handled by `public/ga-init.js`.
+- For GitHub Pages, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` as a GitHub repository secret so the Actions build can inject it.
+- For Vercel, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the project environment variables.
+
+### Vercel Web Analytics
+
+Vercel Web Analytics is enabled only for Vercel deployments.
+
+- The component is mounted from `app/layout.tsx`.
+- The GitHub Pages build intentionally skips it because `/_vercel/insights/script.js` does not exist on the `*.github.io` domain.
+- In Vercel, make sure Web Analytics is enabled in the project settings.
+
+### Analytics troubleshooting
+
+- `ERR_BLOCKED_BY_CLIENT` usually means a browser extension or privacy tool blocked the analytics request.
+- On GitHub Pages, you should not see Vercel Analytics load attempts after the recent fix.
+- On Vercel, `/_vercel/insights/script.js` should load only on the Vercel-hosted domain.
+
+## Where to edit content
+
+Most content is intentionally file-driven.
+
+### Core site content
+
+Edit `data/siteData.ts` for:
+
+- navigation
+- profile facts
+- current status
+- experience
+- projects
+- about content
+- contact blurbs
+- CV link metadata
+
+### Blog content
+
+Blog content is split across:
+
+- `data/blogPosts.generated.json`: rendered post payloads
+- `data/blogPosts.ts`: slugs, categories, labels, summaries, and related metadata
+
+### Static assets
+
+Edit files under `public/` for:
+
+- `public/images/`: profile images
+- `public/cv/senthilnathan_t.pdf`: downloadable resume PDF
+- `public/cv/resume.tex`: LaTeX source for the CV
+- favicon and touch icon assets
+
+## Project structure
+
+High-level layout:
+
+```text
+app/                   Next.js App Router pages and layout
+components/            Shared UI components
+data/                  Site and blog content
+public/                Static assets, images, CV, GA init script
+.github/workflows/     GitHub Pages deployment workflow
+next.config.ts         Build behavior by deployment target
+```
+
+## Build behavior details
+
+`next.config.ts` switches behavior using `DEPLOY_TARGET`.
+
+- `github-pages`: static export enabled, images unoptimized
+- `vercel`: normal Next.js build, images optimized
+
+If `DEPLOY_TARGET` is not set, the config falls back to:
+
+1. `vercel` when `VERCEL=1`
+2. `github-pages` otherwise
+
+That fallback is important because a plain local `npm run build` behaves like the GitHub Pages build unless you override it.
+
+## GitHub Pages setup
 
 1. Push the repository to GitHub.
 2. In GitHub, open `Settings -> Pages`.
 3. Set the source to `GitHub Actions`.
-4. Push to `main` to trigger the build and deployment workflow.
+4. Add the `NEXT_PUBLIC_GA_MEASUREMENT_ID` repository secret if you want GA enabled there.
+5. Push to `main` or trigger the workflow manually.
 
-The workflow sets `DEPLOY_TARGET=github-pages`, which keeps static export enabled for Pages.
+## Vercel setup
 
-### Vercel
-
-1. Push the repository to GitHub.
-2. Sign in to [Vercel](https://vercel.com/) and click `Add New -> Project`.
-3. Import this GitHub repository.
-4. In Vercel project settings, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` if you want Google Analytics enabled.
-5. Optional but explicit: add `DEPLOY_TARGET=vercel` as an environment variable. This is not strictly required because Vercel is auto-detected, but it makes the intended target obvious.
-6. Keep the framework preset as `Next.js`.
-7. Leave the output directory blank.
-8. Deploy.
-
-After that, Vercel will redeploy automatically on new pushes to the connected branch.
+1. Import the repository into Vercel.
+2. Keep the framework preset as `Next.js`.
+3. Leave the output directory blank.
+4. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` if you want Google Analytics enabled.
+5. Enable Web Analytics in the Vercel project settings.
+6. Optionally set `DEPLOY_TARGET=vercel` to make the deployment target explicit.
 
 ## Notes
 
-- `next.config.ts` switches behavior by deployment target:
-- GitHub Pages uses static export and unoptimized images.
-- Vercel uses standard Next.js output and Next image optimization.
-- The home portrait is served from prebuilt AVIF/WebP/JPEG assets in `public/images/`.
-- The UI defaults to dark mode, includes a manual light/dark toggle in the header, and stores the visitor's choice in `localStorage`.
-- GitHub Pages still has static-hosting limits, so features like API routes or middleware would require Vercel or another server-capable host.
+- The UI defaults to dark mode and stores the theme preference in `localStorage`.
+- The portfolio is compatible with static hosting, but GitHub Pages still cannot support server-only Next.js features such as API routes or middleware-backed behavior.
+- The home portrait is already prebuilt in AVIF, WebP, and JPEG variants under `public/images/`.
