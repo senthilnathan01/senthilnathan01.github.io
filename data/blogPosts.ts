@@ -17,6 +17,7 @@ type BlogConfig = {
   categoryLabel: string;
   collectionTitle: string;
   collectionBlurb: string;
+  keepFigures?: boolean;
   summaryOverride?: string;
   sortOrder?: number;
   seriesPart?: number;
@@ -105,6 +106,14 @@ const postConfigByUrl: Record<string, BlogConfig> = {
     categoryLabel: blogCollections.tech.label,
     collectionTitle: blogCollections.tech.title,
     collectionBlurb: blogCollections.tech.blurb,
+  },
+  'https://medium.com/@tsnsenthil01/sliding-window-attention-explained-the-core-concept-and-the-math-without-any-fluff-834fc3c81476': {
+    slug: 'sliding-window-attention-explained-the-core-concept-and-the-math-without-any-fluff',
+    category: 'tech',
+    categoryLabel: blogCollections.tech.label,
+    collectionTitle: blogCollections.tech.title,
+    collectionBlurb: blogCollections.tech.blurb,
+    keepFigures: true,
   },
   'https://medium.com/@tsnsenthil01/vllm-a-more-efficient-way-to-serve-large-language-models-053c98b6543a': {
     slug: 'vllm-a-more-efficient-way-to-serve-large-language-models',
@@ -345,9 +354,9 @@ function extractSummary(contentHtml: string) {
 function buildContentHtml(
   contentHtml: string,
   currentSlug: string,
-  config: Pick<BlogConfig, 'introHtml' | 'removeSnippets' | 'replacements'>,
+  config: Pick<BlogConfig, 'introHtml' | 'removeSnippets' | 'replacements' | 'keepFigures'>,
 ) {
-  let nextHtml = contentHtml.replace(/<figure>[\s\S]*?<\/figure>/g, '').trim();
+  let nextHtml = config.keepFigures ? contentHtml.trim() : contentHtml.replace(/<figure>[\s\S]*?<\/figure>/g, '').trim();
 
   for (const snippet of config.removeSnippets ?? []) {
     nextHtml = nextHtml.replaceAll(snippet, '');

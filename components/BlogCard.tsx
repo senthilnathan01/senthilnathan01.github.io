@@ -16,7 +16,7 @@ export function BlogCard({ post, showCollection = false }: BlogCardProps) {
             src={post.heroImage}
             alt={post.title}
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width: 1024px) 33vw, 100vw"
           />
         </div>

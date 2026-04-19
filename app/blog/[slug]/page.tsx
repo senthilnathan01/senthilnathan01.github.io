@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.heroImage ? (
             <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/70">
               <div className="relative aspect-[16/8] w-full">
-                <Image src={post.heroImage} alt={post.title} fill className="object-cover" sizes="100vw" priority />
+                <Image src={post.heroImage} alt={post.title} fill className="object-contain" sizes="100vw" priority />
               </div>
             </div>
           ) : null}
