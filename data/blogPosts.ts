@@ -1,4 +1,5 @@
 import rawPosts from './blogPosts.generated.json';
+import { localBlogConfigs, localBlogPosts } from './localBlogPosts';
 
 export type BlogCategory = 'tech' | 'non-tech';
 
@@ -6,7 +7,7 @@ type RawBlogPost = {
   title: string;
   mediumUrl: string;
   publishedAt: string;
-  heroImage: string;
+  heroImage?: string;
   contentHtml: string;
 };
 
@@ -35,7 +36,7 @@ export type BlogPost = {
   mediumUrl: string;
   publishedAt: string;
   dateLabel: string;
-  heroImage: string;
+  heroImage?: string;
   summary: string;
   contentHtml: string;
   category: BlogCategory;
@@ -69,7 +70,20 @@ export const blogCollections: Record<
   },
 };
 
+const normalizedLocalBlogConfigs: Record<string, BlogConfig> = Object.fromEntries(
+  Object.entries(localBlogConfigs).map(([url, config]) => [
+    url,
+    {
+      ...config,
+      categoryLabel: blogCollections[config.category].label,
+      collectionTitle: blogCollections[config.category].title,
+      collectionBlurb: blogCollections[config.category].blurb,
+    },
+  ]),
+);
+
 const postConfigByUrl: Record<string, BlogConfig> = {
+  ...normalizedLocalBlogConfigs,
   'https://medium.com/@tsnsenthil01/do-not-let-llm-costs-kill-a-good-idea-too-early-2bbc5b2bc105': {
     slug: 'do-not-let-llm-costs-kill-a-good-idea-too-early',
     category: 'non-tech',
@@ -389,7 +403,7 @@ function mapBlogPost(rawPost: RawBlogPost): BlogPost {
   };
 }
 
-const blogPosts = (rawPosts as RawBlogPost[])
+const blogPosts = [...(rawPosts as RawBlogPost[]), ...localBlogPosts]
   .map(mapBlogPost)
   .sort((left, right) => new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime());
 

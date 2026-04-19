@@ -10,9 +10,17 @@ type BlogCardProps = {
 export function BlogCard({ post, showCollection = false }: BlogCardProps) {
   return (
     <article className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/70 shadow-[0_18px_50px_rgba(0,0,0,0.24)]">
-      <div className="relative aspect-[16/9] border-b border-zinc-800">
-        <Image src={post.heroImage} alt={post.title} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />
-      </div>
+      {post.heroImage ? (
+        <div className="relative aspect-[16/9] border-b border-zinc-800">
+          <Image
+            src={post.heroImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 33vw, 100vw"
+          />
+        </div>
+      ) : null}
       <div className="space-y-4 p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.22em] text-zinc-500">
           <span>{post.dateLabel}</span>

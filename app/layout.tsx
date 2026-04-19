@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
+import 'katex/dist/katex.min.css';
 import './globals.css';
 
 const deployTarget = process.env.DEPLOY_TARGET ?? (process.env.VERCEL === '1' ? 'vercel' : 'github-pages');

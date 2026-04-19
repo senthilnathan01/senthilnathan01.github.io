@@ -72,11 +72,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/70">
-            <div className="relative aspect-[16/8] w-full">
-              <Image src={post.heroImage} alt={post.title} fill className="object-cover" sizes="100vw" priority />
+          {post.heroImage ? (
+            <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/70">
+              <div className="relative aspect-[16/8] w-full">
+                <Image src={post.heroImage} alt={post.title} fill className="object-cover" sizes="100vw" priority />
+              </div>
             </div>
-          </div>
+          ) : null}
         </section>
 
         <section className="space-y-4">
