@@ -154,7 +154,7 @@ export const siteData = {
     },
   ] as ProjectItem[],
   growthPhilosophy:
-    "I'm all about becoming my absolute best (I want to see what my full potential is). On a side note, I also believe broad capability matters because becoming exceptional in one domain usually requires getting strong across many.",
+    "I am all about becoming my absolute best. It physically hurts me to leave my full potential untapped. I keep an open mind and learn across domains, because depth in one area only goes so far unless you also understand where and how to apply it.",
   about: [
     {
       title: 'Embrace bold risks',
