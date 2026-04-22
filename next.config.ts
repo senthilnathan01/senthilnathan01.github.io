@@ -7,12 +7,6 @@ const nextConfig: NextConfig = {
   ...(isGitHubPages ? { output: 'export' } : {}),
   images: {
     unoptimized: isGitHubPages,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn-images-1.medium.com',
-      },
-    ],
   },
 };
 

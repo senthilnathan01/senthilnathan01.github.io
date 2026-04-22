@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Chunkwise training for linear attention explained</title>
+  <desc id="desc">A three-panel diagram showing sequential chunk processing, chunk-state materialization, and parallel chunk-output computation.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fffdf8; }
+      .panel { fill: #ffffff; stroke: #d8d0c2; stroke-width: 2; rx: 24; ry: 24; }
+      .title { font: 700 34px Georgia, "Times New Roman", serif; fill: #171717; }
+      .subtitle { font: 600 20px Georgia, "Times New Roman", serif; fill: #2f2f2f; }
+      .body { font: 500 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #3d3d3d; }
+      .small { font: 500 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #585858; }
+      .state { fill: #cfd2ff; stroke: #5c63cc; stroke-width: 3; rx: 18; ry: 18; }
+      .chunk { fill: #ffe2bf; stroke: #f08b2d; stroke-width: 3; rx: 18; ry: 18; }
+      .output { fill: #ffd7dc; stroke: #e56b7f; stroke-width: 3; rx: 18; ry: 18; }
+      .store { fill: #f5f0e6; stroke: #8a7e6d; stroke-width: 2.5; rx: 16; ry: 16; }
+      .parallel { fill: #e4fbef; stroke: #32a266; stroke-width: 2.5; rx: 999; ry: 999; }
+      .arrow { stroke: #222; stroke-width: 4; fill: none; marker-end: url(#arrowHead); }
+      .soft-arrow { stroke: #6d6d6d; stroke-width: 3; fill: none; marker-end: url(#arrowHeadSoft); }
+      .dashed { stroke-dasharray: 10 10; }
+      .divider { stroke: #e7dfd3; stroke-width: 2; }
+      .caption { font: 600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4b4b4b; }
+      .boxlabel { font: 700 24px Georgia, "Times New Roman", serif; fill: #1d1d1d; }
+      .chiplabel { font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1d1d1d; }
+      .legend { font: 600 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #333; }
+    </style>
+    <marker id="arrowHead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#222"/>
+    </marker>
+    <marker id="arrowHeadSoft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#6d6d6d"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+
+  <text class="title" x="800" y="56" text-anchor="middle">Chunkwise Training in Two Passes</text>
+  <text class="body" x="800" y="92" text-anchor="middle">A clearer redraw of the paper's idea: scan states first, then compute chunk outputs in parallel.</text>
+
+  <rect class="panel" x="40" y="130" width="480" height="760"/>
+  <rect class="panel" x="560" y="130" width="480" height="760"/>
+  <rect class="panel" x="1080" y="130" width="480" height="760"/>
+
+  <text class="subtitle" x="80" y="182">A. Sequential streaming</text>
+  <text class="small" x="80" y="212">Low memory. Low sequence parallelism.</text>
+
+  <rect class="state" x="82" y="320" width="120" height="84"/>
+  <text class="boxlabel" x="142" y="371" text-anchor="middle">S[t-1]</text>
+
+  <rect class="chunk" x="236" y="284" width="120" height="156"/>
+  <text class="boxlabel" x="296" y="334" text-anchor="middle">Chunk i</text>
+  <text class="chiplabel" x="296" y="368" text-anchor="middle">Q[i], K[i], V[i]</text>
+
+  <rect class="output" x="240" y="500" width="184" height="94"/>
+  <text class="boxlabel" x="332" y="540" text-anchor="middle">O[i]</text>
+  <text class="small" x="332" y="568" text-anchor="middle">inter + intra</text>
+
+  <rect class="state" x="386" y="320" width="120" height="84"/>
+  <text class="boxlabel" x="446" y="371" text-anchor="middle">S[t]</text>
+
+  <path class="arrow" d="M202 362 H226"/>
+  <path class="arrow" d="M356 362 H376"/>
+  <path class="arrow" d="M296 440 V486"/>
+  <path class="soft-arrow dashed" d="M506 362 H540"/>
+
+  <text class="caption" x="82" y="646">Use previous state + current chunk.</text>
+  <text class="caption" x="82" y="676">Emit next state and current output.</text>
+  <text class="body" x="82" y="730">Good for memory. Bad for sequence-level parallelism.</text>
+
+  <text class="subtitle" x="600" y="182">B. Scan and store chunk states</text>
+  <text class="small" x="600" y="212">Sequential pass. Save each boundary state.</text>
+
+  <rect class="state" x="602" y="290" width="92" height="74"/>
+  <text class="boxlabel" x="648" y="336" text-anchor="middle">S[0]</text>
+
+  <rect class="chunk" x="732" y="274" width="92" height="106"/>
+  <text class="boxlabel" x="778" y="320" text-anchor="middle">K,V</text>
+  <text class="small" x="778" y="348" text-anchor="middle">chunk 1</text>
+
+  <rect class="state" x="860" y="290" width="92" height="74"/>
+  <text class="boxlabel" x="906" y="336" text-anchor="middle">S[1]</text>
+
+  <rect class="chunk" x="732" y="476" width="92" height="106"/>
+  <text class="boxlabel" x="778" y="522" text-anchor="middle">K,V</text>
+  <text class="small" x="778" y="550" text-anchor="middle">chunk 2</text>
+
+  <rect class="state" x="860" y="492" width="92" height="74"/>
+  <text class="boxlabel" x="906" y="538" text-anchor="middle">S[2]</text>
+
+  <rect class="chunk" x="732" y="678" width="92" height="106"/>
+  <text class="boxlabel" x="778" y="724" text-anchor="middle">K,V</text>
+  <text class="small" x="778" y="752" text-anchor="middle">chunk 3</text>
+
+  <rect class="state" x="860" y="694" width="92" height="74"/>
+  <text class="boxlabel" x="906" y="740" text-anchor="middle">S[3]</text>
+
+  <path class="arrow" d="M694 327 H722"/>
+  <path class="arrow" d="M824 327 H850"/>
+  <path class="soft-arrow" d="M906 364 V456"/>
+  <path class="arrow" d="M824 529 H850"/>
+  <path class="soft-arrow" d="M906 566 V658"/>
+  <path class="arrow" d="M824 731 H850"/>
+
+  <rect class="store" x="972" y="282" width="50" height="90"/>
+  <rect class="store" x="972" y="484" width="50" height="90"/>
+  <rect class="store" x="972" y="686" width="50" height="90"/>
+  <text class="chiplabel" x="997" y="316" text-anchor="middle">save</text>
+  <text class="chiplabel" x="997" y="518" text-anchor="middle">save</text>
+  <text class="chiplabel" x="997" y="720" text-anchor="middle">save</text>
+  <text class="small" x="997" y="340" text-anchor="middle">to HBM</text>
+  <text class="small" x="997" y="542" text-anchor="middle">to HBM</text>
+  <text class="small" x="997" y="744" text-anchor="middle">to HBM</text>
+
+  <text class="body" x="600" y="838">Now every chunk has a known start state.</text>
+  <text class="body" x="600" y="866">That unlocks the parallel output pass.</text>
+
+  <text class="subtitle" x="1120" y="182">C. Compute chunk outputs in parallel</text>
+  <text class="small" x="1120" y="212">Possible only after the chunk states are known.</text>
+
+  <rect class="parallel" x="1322" y="232" width="178" height="48"/>
+  <text class="legend" x="1411" y="263" text-anchor="middle">run these lanes together</text>
+
+  <line class="divider" x1="1120" y1="418" x2="1520" y2="418"/>
+  <line class="divider" x1="1120" y1="612" x2="1520" y2="612"/>
+
+  <rect class="state" x="1122" y="286" width="102" height="72"/>
+  <text class="boxlabel" x="1173" y="331" text-anchor="middle">S[0]</text>
+  <rect class="chunk" x="1260" y="270" width="114" height="104"/>
+  <text class="boxlabel" x="1317" y="314" text-anchor="middle">Chunk 1</text>
+  <text class="small" x="1317" y="344" text-anchor="middle">Q,K,V</text>
+  <rect class="output" x="1410" y="278" width="116" height="88"/>
+  <text class="boxlabel" x="1468" y="330" text-anchor="middle">O[1]</text>
+
+  <rect class="state" x="1122" y="480" width="102" height="72"/>
+  <text class="boxlabel" x="1173" y="525" text-anchor="middle">S[1]</text>
+  <rect class="chunk" x="1260" y="464" width="114" height="104"/>
+  <text class="boxlabel" x="1317" y="508" text-anchor="middle">Chunk 2</text>
+  <text class="small" x="1317" y="538" text-anchor="middle">Q,K,V</text>
+  <rect class="output" x="1410" y="472" width="116" height="88"/>
+  <text class="boxlabel" x="1468" y="524" text-anchor="middle">O[2]</text>
+
+  <rect class="state" x="1122" y="674" width="102" height="72"/>
+  <text class="boxlabel" x="1173" y="719" text-anchor="middle">S[2]</text>
+  <rect class="chunk" x="1260" y="658" width="114" height="104"/>
+  <text class="boxlabel" x="1317" y="702" text-anchor="middle">Chunk 3</text>
+  <text class="small" x="1317" y="732" text-anchor="middle">Q,K,V</text>
+  <rect class="output" x="1410" y="666" width="116" height="88"/>
+  <text class="boxlabel" x="1468" y="718" text-anchor="middle">O[3]</text>
+
+  <path class="arrow" d="M1224 322 H1248"/>
+  <path class="arrow" d="M1374 322 H1398"/>
+  <path class="arrow" d="M1224 516 H1248"/>
+  <path class="arrow" d="M1374 516 H1398"/>
+  <path class="arrow" d="M1224 710 H1248"/>
+  <path class="arrow" d="M1374 710 H1398"/>
+
+  <text class="body" x="1120" y="838">Extra memory, but much better parallelism.</text>
+  <text class="body" x="1120" y="866">This is the hardware win GLA builds on.</text>
+
+  <rect class="state" x="96" y="924" width="36" height="28"/>
+  <text class="legend" x="144" y="944">chunk boundary state</text>
+  <rect class="chunk" x="406" y="924" width="36" height="28"/>
+  <text class="legend" x="454" y="944">current chunk inputs</text>
+  <rect class="output" x="720" y="924" width="36" height="28"/>
+  <text class="legend" x="768" y="944">chunk output</text>
+  <rect class="store" x="990" y="924" width="36" height="28"/>
+  <text class="legend" x="1038" y="944">stored state</text>
+</svg>

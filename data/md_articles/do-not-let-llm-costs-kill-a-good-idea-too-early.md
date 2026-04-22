@@ -1,0 +1,8 @@
+---
+title: "Do Not Let LLM Costs Kill a Good Idea Too Early"
+slug: "do-not-let-llm-costs-kill-a-good-idea-too-early"
+publishedAt: "2026-04-07T12:50:17.000Z"
+heroImage: "/images/blog/do-not-let-llm-costs-kill-a-good-idea-too-early/hero.jpeg"
+contentFormat: html
+---
+<figure><img alt="" src="/images/blog/do-not-let-llm-costs-kill-a-good-idea-too-early/hero.jpeg" /></figure><p>Building is getting easier. The only thing that matters now is a <strong>GOOD IDEA and FREAKING GREAT EXECUTION.</strong></p><p>When you’re coming up with ideas for a new product or feature that involves LLMs, just don’t let the cost of APIs or running the models even enter your mind.</p><p>Keep it completely out of the picture during that early creative phase.</p><p>The reason is simple. Inference is going to keep getting cheaper and the models are going to keep getting more capable. That’s the direction everything is headed.</p><p>So in the beginning your only job is to stay genuinely curious and let the idea take shape however it wants to. <strong>LET YOUR HEAD BE FULLY ON THE IDEA ITSELF AND NOTHING ELSE.</strong></p><p>Once the idea feels solid, that’s when you switch into engineering mode and get smart about optimizations and efficiency.</p><p>Even then, look a few years ahead at how things are likely to change and build with that longer view in mind.</p><p><strong>You should start thinking a lot and getting creative from right now.</strong></p>

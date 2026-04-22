@@ -1,7 +1,7 @@
 ---
 title: "AI is moving too fast. Here is how I am keeping up"
 slug: "ai-is-moving-too-fast-here-is-how-i-am-keeping-up"
-category: tech
+category: non-tech
 publishedAt: "2026-04-21T00:00:00.000Z"
 summary: "Much of the overwhelm around AI comes from familiar software ideas being dressed up in new vocabulary. Reframing it that way makes keeping up much easier."
 ---

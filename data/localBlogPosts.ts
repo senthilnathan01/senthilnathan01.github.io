@@ -9,8 +9,8 @@ import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
 export type LocalRawBlogPost = {
+  slug: string;
   title: string;
-  mediumUrl: string;
   publishedAt: string;
   heroImage?: string;
   contentHtml: string;
@@ -35,9 +35,9 @@ type Frontmatter = {
   title?: string;
   slug?: string;
   category?: 'tech' | 'non-tech';
+  contentFormat?: 'markdown' | 'html';
   publishedAt?: string;
   summary?: string;
-  mediumUrl?: string;
   heroImage?: string;
   sortOrder?: number;
   seriesPart?: number;
@@ -104,12 +104,19 @@ function parseFrontmatter(markdown: string) {
       continue;
     }
 
+    if (key === 'contentFormat') {
+      if (value === 'markdown' || value === 'html') {
+        frontmatter.contentFormat = value;
+      }
+
+      continue;
+    }
+
     if (
       key === 'title' ||
       key === 'slug' ||
       key === 'publishedAt' ||
       key === 'summary' ||
-      key === 'mediumUrl' ||
       key === 'heroImage'
     ) {
       if (typeof value === 'string' && value.length > 0) {
@@ -165,6 +172,7 @@ function renderMarkdownToHtml(markdown: string) {
 
 const localMarkdownEntries = readMarkdownArticles().map(({ fileName, markdown }) => {
   const { frontmatter, body } = parseFrontmatter(markdown);
+  const contentFormat = frontmatter.contentFormat ?? 'markdown';
   const title = frontmatter.title ?? extractMarkdownTitle(body);
 
   if (!title) {
@@ -179,15 +187,15 @@ const localMarkdownEntries = readMarkdownArticles().map(({ fileName, markdown })
     throw new Error(`Missing publishedAt in markdown frontmatter for ${fileName}`);
   }
 
-  const contentMarkdown = stripMarkdownTitle(body, title).trim();
+  const contentSource = contentFormat === 'html' ? body.trim() : stripMarkdownTitle(body, title).trim();
 
   return {
     rawPost: {
+      slug,
       title,
-      mediumUrl: frontmatter.mediumUrl ?? `local://${slug}`,
       publishedAt,
       heroImage: frontmatter.heroImage,
-      contentHtml: renderMarkdownToHtml(contentMarkdown),
+      contentHtml: contentFormat === 'html' ? contentSource : renderMarkdownToHtml(contentSource),
     } satisfies LocalRawBlogPost,
     config: {
       slug,
@@ -202,5 +210,5 @@ const localMarkdownEntries = readMarkdownArticles().map(({ fileName, markdown })
 export const localBlogPosts: LocalRawBlogPost[] = localMarkdownEntries.map((entry) => entry.rawPost);
 
 export const localBlogConfigs: Record<string, LocalBlogConfig> = Object.fromEntries(
-  localMarkdownEntries.map((entry) => [entry.rawPost.mediumUrl, entry.config]),
+  localMarkdownEntries.map((entry) => [entry.rawPost.slug, entry.config]),
 );

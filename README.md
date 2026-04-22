@@ -134,10 +134,12 @@ Edit `data/siteData.ts` for:
 
 ### Blog content
 
-Blog content is split across:
+Blog content is markdown-first:
 
-- `data/blogPosts.generated.json`: rendered post payloads
+- `data/md_articles/*.md`: article source files with frontmatter
+- `data/localBlogPosts.ts`: markdown/html ingestion pipeline
 - `data/blogPosts.ts`: slugs, categories, labels, summaries, and related metadata
+- Store blog images under `public/images/blog/<post-slug>/` and reference the local asset path from frontmatter or markdown content
 
 ### Static assets
 
