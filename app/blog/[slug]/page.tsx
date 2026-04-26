@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span className="text-emerald-400">$</span> render article --theme terminal-notes
           </p>
           <article
-            className="blog-content border-l border-zinc-800 pl-4 text-sm text-zinc-300 sm:text-base"
+            className="blog-content pl-4 text-sm text-zinc-300 sm:text-base"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
         </section>

@@ -11,7 +11,7 @@ export function CommandSection({ command, children, withCursor = false }: Comman
   return (
     <section aria-label={`Command output: ${command}`} className="space-y-3">
       <PromptLine command={command} withCursor={withCursor} />
-      <div className="content-body border-l border-zinc-800 pl-4 text-sm leading-7 sm:text-base">{children}</div>
+      <div className="content-body pl-4 text-sm leading-7 sm:text-base">{children}</div>
     </section>
   );
 }
