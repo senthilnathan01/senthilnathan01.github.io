@@ -317,6 +317,11 @@ html[data-theme='light'] .theme-toggle__icon--sun {
   color: var(--prose-quote);
 }
 
+.blog-content blockquote + blockquote {
+  margin-top: -1.4rem;
+  padding-top: 0.4rem;
+}
+
 .blog-content blockquote p,
 .blog-content blockquote em,
 .blog-content blockquote strong {
