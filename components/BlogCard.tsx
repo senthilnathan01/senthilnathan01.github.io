@@ -41,22 +41,13 @@ export function BlogCard({ post, showCategory = true, showCollection = false }: 
           ) : null}
         </div>
 
-        <div className="space-y-2">
-          <h3 className="content-title text-lg leading-8">
+        <div>
+          <h3 className="content-title text-sm leading-6 sm:text-base sm:leading-7">
             <Link href={post.href} className="transition hover:text-emerald-300">
               {post.title}
             </Link>
           </h3>
-          <p className="content-subtitle text-sm leading-7">{post.summary}</p>
         </div>
-
-        <Link
-          href={post.href}
-          className="inline-flex items-center gap-2 text-sm text-emerald-300 transition hover:text-emerald-200"
-        >
-          Open article
-          <span aria-hidden="true">↗</span>
-        </Link>
       </div>
     </article>
   );

@@ -63,9 +63,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <span>/</span>
               <span className="text-zinc-300">{post.dateLabel}</span>
             </div>
-            <div className="space-y-3">
+            <div>
               <h1 className="content-title text-3xl leading-tight sm:text-4xl">{post.title}</h1>
-              <p className="content-subtitle text-base leading-8">{post.summary}</p>
             </div>
           </div>
 
@@ -100,7 +99,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               >
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Previous</p>
                 <h2 className="content-title mt-2 text-lg">{previous.title}</h2>
-                <p className="content-subtitle mt-2 text-sm leading-7">{previous.summary}</p>
               </Link>
             ) : (
               <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/35 p-5 text-zinc-600">
@@ -115,7 +113,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               >
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Next</p>
                 <h2 className="content-title mt-2 text-lg">{next.title}</h2>
-                <p className="content-subtitle mt-2 text-sm leading-7">{next.summary}</p>
               </Link>
             ) : (
               <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/35 p-5 text-zinc-600">

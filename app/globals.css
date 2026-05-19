@@ -170,6 +170,10 @@ html[data-theme='light'] .theme-toggle__icon--sun {
   color: var(--content-accent-warm);
 }
 
+.content-accent-strong {
+  color: var(--prose-strong);
+}
+
 .accent-pill {
   border-color: var(--accent-pill-border);
   background-color: var(--accent-pill-bg);

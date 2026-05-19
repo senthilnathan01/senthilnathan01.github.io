@@ -26,7 +26,7 @@ export function ContentEntryCard({ entry }: ContentEntryCardProps) {
         <ContentCategoryPill category={entry.category} />
         <span className="text-xs uppercase tracking-[0.18em] text-zinc-500">{formatContentDate(entry.date)}</span>
       </div>
-      <h3 className="content-title mt-3 text-base leading-7">{titleContent}</h3>
+      <h3 className="content-title mt-3 text-sm leading-6 sm:text-base sm:leading-7">{titleContent}</h3>
       {hasNotes ? (
         <Link href={`/content/entry?id=${entry.id}`} className="mt-3 inline-block text-sm text-emerald-300 transition hover:text-emerald-200">
           open notes ↗

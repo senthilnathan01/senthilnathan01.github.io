@@ -30,7 +30,7 @@ export default function ExperiencePage() {
                   <p className="text-sm text-zinc-500">
                     {item.company} · {item.location} · {item.period}
                   </p>
-                  <p className="content-body">{item.description}</p>
+                  <p className="content-accent-strong">{item.description}</p>
                 </div>
 
                 <ul className="content-subtitle space-y-2 text-sm leading-6">
