@@ -37,7 +37,7 @@ export function ThemeToggle() {
         const currentTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
         applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
       }}
-      className="theme-toggle inline-flex items-center justify-center rounded border border-zinc-700 px-3 py-1.5 text-xs text-zinc-200 transition hover:border-zinc-500 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400"
+      className="theme-toggle inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-zinc-700 p-0 text-zinc-200 transition hover:border-zinc-500 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400"
       aria-label="Toggle light and dark mode"
       title="Toggle light and dark mode"
     >

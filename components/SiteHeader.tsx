@@ -29,7 +29,7 @@ export function SiteHeader() {
         </Link>
         <p className="content-muted text-xs lowercase tracking-[0.18em]">{siteData.status}</p>
       </div>
-      <div className="flex items-start gap-3 sm:items-center">
+      <div className="flex items-center gap-3">
         <MobileNav items={siteData.nav} pathname={pathname} />
         <nav className="hidden sm:block" aria-label="Primary">
           <ul className="content-body flex flex-wrap items-center gap-5 text-sm">

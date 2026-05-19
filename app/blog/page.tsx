@@ -29,7 +29,6 @@ export default function BlogPage() {
               </p>
               <h2 className="content-title text-2xl">{blogCollections.tech.title}</h2>
               <p className="content-subtitle text-sm leading-7">{blogCollections.tech.blurb}</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{techPostCount} tech articles</p>
             </div>
             <Link
               href="/blog/tech"
@@ -40,7 +39,7 @@ export default function BlogPage() {
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
             {featuredTechPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
+              <BlogCard key={post.slug} post={post} showCategory={false} />
             ))}
           </div>
         </section>
@@ -53,7 +52,6 @@ export default function BlogPage() {
               </p>
               <h2 className="content-title text-2xl">{blogCollections['non-tech'].title}</h2>
               <p className="content-subtitle text-sm leading-7">{blogCollections['non-tech'].blurb}</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{nonTechPostCount} non-tech articles</p>
             </div>
             <Link
               href="/blog/non-tech"
@@ -64,7 +62,7 @@ export default function BlogPage() {
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
             {featuredNonTechPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
+              <BlogCard key={post.slug} post={post} showCategory={false} />
             ))}
             {Array.from({ length: nonTechPlaceholders }).map((_, index) => (
               <BlogPlaceholderCard

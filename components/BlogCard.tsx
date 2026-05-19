@@ -4,10 +4,11 @@ import type { BlogPost } from '@/data/blogPosts';
 
 type BlogCardProps = {
   post: BlogPost;
+  showCategory?: boolean;
   showCollection?: boolean;
 };
 
-export function BlogCard({ post, showCollection = false }: BlogCardProps) {
+export function BlogCard({ post, showCategory = true, showCollection = false }: BlogCardProps) {
   return (
     <article className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/70 shadow-[0_18px_50px_rgba(0,0,0,0.24)]">
       {post.heroImage ? (
@@ -24,8 +25,14 @@ export function BlogCard({ post, showCollection = false }: BlogCardProps) {
       <div className="space-y-4 p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.22em] text-zinc-500">
           <span>{post.dateLabel}</span>
-          <span className="text-zinc-700">/</span>
-          <span className="content-accent-cool">{post.seriesPart ? `Part ${post.seriesPart}` : post.categoryLabel}</span>
+          {showCategory ? (
+            <>
+              <span className="text-zinc-700">/</span>
+              <span className="content-accent-cool">
+                {post.seriesPart ? `Part ${post.seriesPart}` : post.categoryLabel}
+              </span>
+            </>
+          ) : null}
           {showCollection ? (
             <>
               <span className="text-zinc-700">/</span>
