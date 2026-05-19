@@ -65,6 +65,7 @@ export const siteData = {
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Blog', href: '/blog' },
+    { label: 'Content', href: '/content' },
     { label: 'Experience', href: '/experience' },
     { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },

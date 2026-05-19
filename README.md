@@ -17,6 +17,7 @@ Terminal-inspired personal portfolio built with Next.js App Router and deployed 
 - Blog
 - Experience
 - Projects
+- Content
 - About
 - Research
 - Contact
@@ -40,6 +41,8 @@ cp .env.example .env.local
 
 ```bash
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 Start the dev server:
@@ -140,6 +143,44 @@ Blog content is markdown-first:
 - `data/localBlogPosts.ts`: markdown/html ingestion pipeline
 - `data/blogPosts.ts`: slugs, categories, labels, summaries, and related metadata
 - Store blog images under `public/images/blog/<post-slug>/` and reference the local asset path from frontmatter or markdown content
+
+### Content log
+
+The `/content` page is backed by Supabase so content entries can be added from the site without editing files or pushing Git changes.
+
+Entry fields:
+
+- `date`
+- `category`: `video`, `article`, `book`, or `build`
+- `title`
+- `url` optional
+- `notes` optional, opened on a separate detail page when present
+
+The public `/content` view supports calendar and list modes. All categories are selected by default on page load; visitors can deselect categories to filter calendar counts and list entries locally.
+
+Setup:
+
+1. Create a Supabase project.
+2. Open `supabase/content_entries.sql`.
+3. If needed, replace `tsnsenthil01@gmail.com` with the email address you will use for admin login.
+4. Run the SQL in Supabase Dashboard -> SQL Editor.
+5. In Supabase Dashboard -> Authentication -> Users, create that admin user with a password.
+6. Copy the Project URL and anon public key from Supabase Dashboard -> Project Settings -> API.
+7. Add these values to `.env.local` for local development:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+For GitHub Pages, add the same values as GitHub repository secrets so the Actions build can inject them. For Vercel, add them as project environment variables.
+
+Security model:
+
+- The public anon key is safe to expose; Supabase expects browser apps to use it.
+- Row Level Security allows public reads.
+- Inserts, updates, and deletes are restricted to the authenticated admin email in `supabase/content_entries.sql`.
+- Do not put a Supabase service-role key in this repository or in any `NEXT_PUBLIC_*` environment variable.
 
 ### Static assets
 

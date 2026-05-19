@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CommandSection } from '@/components/CommandSection';
+import { ContentPreview } from '@/components/content/ContentPreview';
 import { LinkList } from '@/components/LinkList';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
@@ -54,18 +55,7 @@ export default function Home() {
           </div>
         </CommandSection>
 
-        <CommandSection command="cat current_status.txt">
-          <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 px-4 py-3 sm:px-5 sm:py-4">
-            <div className="space-y-2">
-              {siteData.summary ? <p className="content-title text-base">{siteData.summary}</p> : null}
-              {siteData.current_status.map((paragraph) => (
-                <p key={paragraph} className="content-body">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </CommandSection>
+        <ContentPreview />
 
         <CommandSection command="cat links.txt">
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 sm:p-5">
