@@ -376,6 +376,28 @@ export function ContentAdmin({
     await loadAdminEntries();
   }
 
+  async function deleteEntry() {
+    if (!client || !editingEntryId) {
+      return;
+    }
+
+    if (!window.confirm(`Delete "${draft.title}"? This cannot be undone.`)) {
+      return;
+    }
+
+    const { error } = await client.from('content_entries').delete().eq('id', editingEntryId);
+
+    if (error) {
+      setStatus(error.message);
+      return;
+    }
+
+    resetDraft();
+    setStatus('Entry deleted.');
+    await onEntriesChanged();
+    await loadAdminEntries();
+  }
+
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-950/55 p-4">
       {session ? (
@@ -457,16 +479,25 @@ export function ContentAdmin({
                 {editingEntryId ? 'update entry' : 'add entry'}
               </button>
               {editingEntryId ? (
-                <button
-                  type="button"
-                  className="min-h-11 rounded border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:text-zinc-100"
-                  onClick={() => {
-                    resetDraft();
-                    setStatus('');
-                  }}
-                >
-                  cancel edit
-                </button>
+                <>
+                  <button
+                    type="button"
+                    className="min-h-11 rounded border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:text-zinc-100"
+                    onClick={() => {
+                      resetDraft();
+                      setStatus('');
+                    }}
+                  >
+                    cancel edit
+                  </button>
+                  <button
+                    type="button"
+                    className="min-h-11 rounded border border-red-500/40 px-4 py-2 text-sm text-red-300 transition hover:border-red-400 hover:text-red-200"
+                    onClick={deleteEntry}
+                  >
+                    delete entry
+                  </button>
+                </>
               ) : null}
             </div>
             {status ? <p className="text-sm text-zinc-500">{status}</p> : null}

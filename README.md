@@ -146,7 +146,7 @@ Blog content is markdown-first:
 
 ### Content log
 
-The `/content` page is backed by Supabase so content entries can be added and edited from the site without editing files or pushing Git changes.
+The `/content` page is backed by Supabase so content entries can be added, edited, and deleted from the site without editing files or pushing Git changes.
 
 Entry fields:
 
