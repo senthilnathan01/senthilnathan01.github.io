@@ -262,14 +262,16 @@ function ContentList({
 
 export function ContentAdmin({
   session,
-  onEntryAdded,
+  onEntriesChanged,
 }: {
   session: Session | null;
-  onEntryAdded: () => Promise<void>;
+  onEntriesChanged: () => Promise<void>;
 }) {
   const client = getSupabaseBrowserClient();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [entries, setEntries] = useState<ContentEntry[]>([]);
+  const [editingEntryId, setEditingEntryId] = useState<number | null>(null);
   const [draft, setDraft] = useState<DraftEntry>({
     date: today,
     category: 'article',
@@ -278,6 +280,35 @@ export function ContentAdmin({
     notes: '',
   });
   const [status, setStatus] = useState('');
+
+  const resetDraft = useCallback(() => {
+    setDraft({ date: today, category: 'article', title: '', url: '', notes: '' });
+    setEditingEntryId(null);
+  }, []);
+
+  const loadAdminEntries = useCallback(async () => {
+    if (!client || !session) {
+      setEntries([]);
+      return;
+    }
+
+    const { data, error } = await client
+      .from('content_entries')
+      .select('id,date,category,title,url,notes,created_at')
+      .order('date', { ascending: false })
+      .order('id', { ascending: false });
+
+    if (error) {
+      setStatus(error.message);
+      return;
+    }
+
+    setEntries((data ?? []).map(normalizeEntry).filter((entry): entry is ContentEntry => Boolean(entry)));
+  }, [client, session]);
+
+  useEffect(() => {
+    void Promise.resolve().then(() => loadAdminEntries());
+  }, [loadAdminEntries]);
 
   async function signIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -297,10 +328,24 @@ export function ContentAdmin({
     }
 
     await client.auth.signOut();
+    resetDraft();
+    setEntries([]);
     setStatus('Signed out.');
   }
 
-  async function addEntry(event: FormEvent<HTMLFormElement>) {
+  function editEntry(entry: ContentEntry) {
+    setEditingEntryId(entry.id);
+    setDraft({
+      date: entry.date,
+      category: entry.category,
+      title: entry.title,
+      url: entry.url ?? '',
+      notes: entry.notes ?? '',
+    });
+    setStatus(`Editing "${entry.title}".`);
+  }
+
+  async function saveEntry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!client) {
@@ -308,100 +353,151 @@ export function ContentAdmin({
       return;
     }
 
-    const { error } = await client.from('content_entries').insert({
+    const payload = {
       date: draft.date,
       category: draft.category,
       title: draft.title.trim(),
       url: draft.url.trim() || null,
       notes: draft.notes.trim() || null,
-    });
+    };
+
+    const { error } = editingEntryId
+      ? await client.from('content_entries').update(payload).eq('id', editingEntryId)
+      : await client.from('content_entries').insert(payload);
 
     if (error) {
       setStatus(error.message);
       return;
     }
 
-    setDraft({ date: today, category: 'article', title: '', url: '', notes: '' });
-    setStatus('Entry added.');
-    await onEntryAdded();
+    resetDraft();
+    setStatus(editingEntryId ? 'Entry updated.' : 'Entry added.');
+    await onEntriesChanged();
+    await loadAdminEntries();
   }
 
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-950/55 p-4">
       {session ? (
-        <form onSubmit={addEntry} className="grid gap-4">
-          <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-zinc-500">
-            <span>{session.user.email}</span>
-            <button type="button" className="text-emerald-300 transition hover:text-emerald-200" onClick={signOut}>
-              sign out
-            </button>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-6">
+          <form onSubmit={saveEntry} className="grid gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-zinc-500">
+              <span>{session.user.email}</span>
+              <button
+                type="button"
+                className="text-emerald-300 transition hover:text-emerald-200"
+                onClick={signOut}
+              >
+                sign out
+              </button>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="grid gap-1 text-sm">
+                <span className="text-zinc-500">date</span>
+                <input
+                  type="date"
+                  required
+                  value={draft.date}
+                  onChange={(event) => setDraft((value) => ({ ...value, date: event.target.value }))}
+                  className="min-h-11 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
+                />
+              </label>
+              <label className="grid gap-1 text-sm">
+                <span className="text-zinc-500">category</span>
+                <div className="grid grid-cols-2 gap-2">
+                  {contentCategories.map((category) => (
+                    <button
+                      key={category}
+                      type="button"
+                      className={`min-h-11 rounded border px-3 py-2 text-sm transition ${
+                        draft.category === category
+                          ? 'border-emerald-500/60 bg-emerald-500/10 text-emerald-300'
+                          : 'border-zinc-800 bg-zinc-950 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
+                      }`}
+                      onClick={() => setDraft((value) => ({ ...value, category }))}
+                    >
+                      {contentCategoryLabels[category]}
+                    </button>
+                  ))}
+                </div>
+              </label>
+            </div>
             <label className="grid gap-1 text-sm">
-              <span className="text-zinc-500">date</span>
+              <span className="text-zinc-500">title</span>
               <input
-                type="date"
                 required
-                value={draft.date}
-                onChange={(event) => setDraft((value) => ({ ...value, date: event.target.value }))}
+                value={draft.title}
+                onChange={(event) => setDraft((value) => ({ ...value, title: event.target.value }))}
                 className="min-h-11 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
               />
             </label>
             <label className="grid gap-1 text-sm">
-              <span className="text-zinc-500">category</span>
-              <div className="grid grid-cols-2 gap-2">
-                {contentCategories.map((category) => (
+              <span className="text-zinc-500">url</span>
+              <input
+                type="url"
+                value={draft.url}
+                onChange={(event) => setDraft((value) => ({ ...value, url: event.target.value }))}
+                className="min-h-11 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
+              />
+            </label>
+            <label className="grid gap-1 text-sm">
+              <span className="text-zinc-500">notes</span>
+              <textarea
+                rows={5}
+                value={draft.notes}
+                onChange={(event) => setDraft((value) => ({ ...value, notes: event.target.value }))}
+                className="min-h-32 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
+              />
+            </label>
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="submit"
+                className="min-h-11 rounded border border-emerald-500/40 px-4 py-2 text-sm text-emerald-300 transition hover:border-emerald-300 hover:text-emerald-200"
+              >
+                {editingEntryId ? 'update entry' : 'add entry'}
+              </button>
+              {editingEntryId ? (
+                <button
+                  type="button"
+                  className="min-h-11 rounded border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition hover:border-zinc-500 hover:text-zinc-100"
+                  onClick={() => {
+                    resetDraft();
+                    setStatus('');
+                  }}
+                >
+                  cancel edit
+                </button>
+              ) : null}
+            </div>
+            {status ? <p className="text-sm text-zinc-500">{status}</p> : null}
+          </form>
+          <div className="grid gap-3 border-t border-zinc-800 pt-5">
+            <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">existing entries</p>
+            {entries.length > 0 ? (
+              <div className="grid gap-2">
+                {entries.map((entry) => (
                   <button
-                    key={category}
+                    key={entry.id}
                     type="button"
-                    className={`min-h-11 rounded border px-3 py-2 text-sm transition ${
-                      draft.category === category
-                        ? 'border-emerald-500/60 bg-emerald-500/10 text-emerald-300'
-                        : 'border-zinc-800 bg-zinc-950 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
+                    className={`rounded-lg border p-3 text-left transition ${
+                      editingEntryId === entry.id
+                        ? 'border-emerald-500/60 bg-emerald-500/10'
+                        : 'border-zinc-800 bg-zinc-950/55 hover:border-zinc-600'
                     }`}
-                    onClick={() => setDraft((value) => ({ ...value, category }))}
+                    onClick={() => editEntry(entry)}
                   >
-                    {contentCategoryLabels[category]}
+                    <span className="block text-sm text-zinc-200">{entry.title}</span>
+                    <span className="mt-1 block text-xs uppercase tracking-[0.16em] text-zinc-500">
+                      {formatContentDate(entry.date)} / {contentCategoryLabels[entry.category]}
+                    </span>
                   </button>
                 ))}
               </div>
-            </label>
+            ) : (
+              <p className="text-sm text-zinc-500">No entries yet.</p>
+            )}
           </div>
-          <label className="grid gap-1 text-sm">
-            <span className="text-zinc-500">title</span>
-            <input
-              required
-              value={draft.title}
-              onChange={(event) => setDraft((value) => ({ ...value, title: event.target.value }))}
-              className="min-h-11 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
-            />
-          </label>
-          <label className="grid gap-1 text-sm">
-            <span className="text-zinc-500">url</span>
-            <input
-              type="url"
-              value={draft.url}
-              onChange={(event) => setDraft((value) => ({ ...value, url: event.target.value }))}
-              className="min-h-11 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
-            />
-          </label>
-          <label className="grid gap-1 text-sm">
-            <span className="text-zinc-500">notes</span>
-            <textarea
-              rows={5}
-              value={draft.notes}
-              onChange={(event) => setDraft((value) => ({ ...value, notes: event.target.value }))}
-              className="min-h-32 rounded border border-zinc-800 bg-zinc-950 px-3 py-2 text-zinc-200"
-            />
-          </label>
-          <button
-            type="submit"
-            className="min-h-11 justify-self-start rounded border border-emerald-500/40 px-4 py-2 text-sm text-emerald-300 transition hover:border-emerald-300 hover:text-emerald-200"
-          >
-            add entry
-          </button>
-          {status ? <p className="text-sm text-zinc-500">{status}</p> : null}
-        </form>
+        </div>
       ) : (
         <form onSubmit={signIn} className="grid gap-4">
           <label className="grid gap-1 text-sm">
@@ -615,10 +711,10 @@ export function ContentAdminPanel() {
   }, [client, refreshSession]);
 
   return (
-    <CommandSection command="admin add-content" withCursor>
+    <CommandSection command="admin manage-content" withCursor>
       <div className="space-y-4">
         {message ? <p className="content-subtitle">{message}</p> : null}
-        <ContentAdmin session={session} onEntryAdded={refreshSession} />
+        <ContentAdmin session={session} onEntriesChanged={refreshSession} />
       </div>
     </CommandSection>
   );
