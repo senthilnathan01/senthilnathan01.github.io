@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { BlogCard } from '@/components/BlogCard';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
-import { blogCollections, getBlogPostsByCategory } from '@/data/blogPosts';
+import { getBlogPostsByCategory } from '@/data/blogPosts';
 
 export const metadata: Metadata = {
   title: 'Beyond Tech',
@@ -20,15 +20,10 @@ export default function NonTechBlogPage() {
           <p className="text-sm text-zinc-400">
             <span className="text-emerald-400">$</span> find blog/non-tech -type f
           </p>
-          <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
-            <p className="content-subtitle text-sm leading-7 sm:text-base">
-              {blogCollections['non-tech'].blurb}
-            </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.18em] text-zinc-500">{postCount} non-tech articles</p>
-          </div>
+          <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{postCount} non-tech articles</p>
         </section>
 
-        <section className="grid gap-5 lg:grid-cols-2">
+        <section className="grid gap-5 lg:grid-cols-3">
           {posts.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}

@@ -58,13 +58,13 @@ export const blogCollections: Record<
   tech: {
     label: 'Tech',
     title: 'Tech Writings',
-    blurb: 'Systems, ML, LLMs, and the engineering details that decide whether ideas survive reality.',
+    blurb: '',
     indexCommand: 'cat featured/tech.log',
   },
   'non-tech': {
     label: 'Beyond Tech',
     title: 'Beyond Tech',
-    blurb: 'Notes on growth, mindset, inner architecture, and the human side of becoming better.',
+    blurb: '',
     indexCommand: 'cat featured/beyond-tech.log',
   },
 };

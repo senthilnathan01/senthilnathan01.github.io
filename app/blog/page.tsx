@@ -28,7 +28,6 @@ export default function BlogPage() {
                 <span className="ml-1 inline-block h-4 w-2 animate-pulse bg-zinc-300 align-middle" aria-hidden="true" />
               </p>
               <h2 className="content-title text-2xl">{blogCollections.tech.title}</h2>
-              <p className="content-subtitle text-sm leading-7">{blogCollections.tech.blurb}</p>
             </div>
             <Link
               href="/blog/tech"
@@ -51,7 +50,6 @@ export default function BlogPage() {
                 <span className="text-emerald-400">$</span> {blogCollections['non-tech'].indexCommand}
               </p>
               <h2 className="content-title text-2xl">{blogCollections['non-tech'].title}</h2>
-              <p className="content-subtitle text-sm leading-7">{blogCollections['non-tech'].blurb}</p>
             </div>
             <Link
               href="/blog/non-tech"
