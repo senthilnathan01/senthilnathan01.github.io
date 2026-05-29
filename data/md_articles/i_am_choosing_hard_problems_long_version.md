@@ -13,7 +13,7 @@ I mean the kind of problem that gets into your head and refuses to leave.
 
 The kind that follows you into the shower.
 
-That is why I am drawn to startups.
+That is why I am drawn to startups. 
 
 A startup is problem density at its highest.
 
@@ -21,17 +21,18 @@ A startup is problem density at its highest.
 - Every decision has a cost.
 - Every solved problem moves the company forward.
 
-## 2
-**I have started thinking seriously about how I want to live.**
 
-*Life is not the dream you describe. Life is the day you repeat.*
+## 2
+**I have started thinking seriously about how I actually want to live.**
+
+*Life is not the dream you describe. It is the day you repeat.*
 
 - Repeat comfort long enough and it becomes your ceiling.
 - Repeat passive work long enough and it becomes your personality.
 
 I refuse that.
 
-I do not want to optimize only for salary, title, or comfort.
+I do not want to optimize for salary, title, or comfort.
 
 - I want hard, meaningful problems.
 - I want work that makes me sharper.
@@ -39,10 +40,9 @@ I do not want to optimize only for salary, title, or comfort.
 - I want work where effort converts into movement.
 
 **The bigger the problem, the bigger the opportunity.**
-**The more uncertain the path, the more room there is for agency.**
 
-That is what I want.
-Agency.
+**The more uncertain the path, the more room there is for AGENCY.**
+
 
 ## 3
 - I want to be close enough to the problem that my decisions matter.
@@ -53,13 +53,12 @@ That is why startups make sense to me.
 
 **Startups are alive, man! And, I want to be alive too!**
 
-I know good startups want people who are insanely cracked. Good. That is exactly the room I want to enter. I know I am still becoming that person. That thought made me procrastinate on applying and reaching out.
-
 Also,
 
 You know what scares me? It is spending my life around mediocre people who never force me to become anything exceptional.
 
 That phase is over.
+
 
 ## 4
 There was a time I thought I wanted to become a quant.
@@ -76,60 +75,56 @@ The instinct was right.
 
 I still respect that world. Some of the smartest, fastest-learning people I know are in quant.
 
-The problem was that I started realizing how specialized the path can become.
-
-To really compete there, you often need years of focused preparation, extremely strong signals early on, elite math or competitive programming backgrounds, or a profile shaped very specifically for that ecosystem.
-
-I respect people who commit to that fully. But I also had to be honest about myself. My profile was not built around that track. And more importantly, I realized I do not only want to optimize for one narrow arena.
+The problem was that I started realizing how specialized the path can become. I realized I do not only want to optimize for one narrow arena.
 
 Right now, I am learning machine learning, software engineering, systems, and anything else that helps me solve hard problems.
 
-- **I like becoming broadly dangerous.**
+
+## 5
+**I like becoming broadly dangerous.**
 - I like building skills that transfer across industries, products, and environments.
 - I want pressure with impact.
 - I want intensity attached to a product, a customer, a company, and a real problem in the world.
 - I want the kind of the work where the skill transfers into everything I want to build next.
 - The kind where I do not just become employable in one elite corridor.
 
-
 I become useful anywhere there is chaos, urgency, and something worth building.
 
 That was an important decision.
 
-- I stopped confusing prestige with destiny.
-- I stopped confusing stress with meaning.
-- I stopped confusing a path that impresses people with a path that feels like mine.
+Also, I know good startups want people who are insanely cracked. Good. That is exactly the room I want to enter. 
 
-## 5
-I have been in the valley of despair on the Dunning-Kruger curve. Meaning, I have seen enough to know how much I do not know. And I realized something: So are many others.
+I am not cracked yet. That thought made me procrastinate on applying and reaching out.
 
-So, I am moving now. 
+But why do I feel this way?
+It is because **"The more you know, the more you know you don't know. Isn't it?"**
 
-I know what I bring:
+You know what else I bring?
 - I learn fast.
 - I figure things out.
 - I do not need hand-holding.
 - I care past the point where most people mentally clock out.
 - I stay with a problem when it becomes ugly, boring, unclear, and uncomfortable.
 
-
-Everyone wants to solve the clean version of the problem.
+Many want to solve the clean version of the problem.
 
 I want the real one.
 
 - the version with missing context
 - the version with pressure
 - the version where nobody has the full answer
-- the version where ownership is not just a nice word in a job description
 
 **If I join a startup, I will treat it like a mission:**
 
 - **I want the company to win,**
+
 - **the product to work,**
+
 - **the problem to die,**
+
 - **the customer to feel the difference.**
 
-I want the thing to exist in the world because we forced it to exist.
+**I want the thing to exist in the world because we forced it to exist.**
 
 I do not want to be a passenger in someone else’s ambition. I want to carry weight.
 
@@ -137,7 +132,7 @@ If I believe in the mission, I cannot imagine being outworked.
 
 **Not even by the founder.**
 
-That is not arrogance. That is the standard!
+I am not being arrogant here. **That is the kind of standards I set for myself!**
 
 If I say I care:
 - my calendar should show it
@@ -148,13 +143,11 @@ If I say I care:
 
 **Because if I believe in the problem, losing feels unacceptable.**
 
-I want work that demands that version of me: the version that becomes dangerous because the mission is worth becoming dangerous for.
+I will always find the work that demands that version of me: the version that becomes dangerous because the mission is worth becoming dangerous for.
 
-Maybe what I wrote burns the bridge to places that want ambition only after it has been made safe, polite, and easy to control.
+---
 
-Maybe it burns the bridge to rooms where hunger is welcome in interviews and inconvenient after joining.
-
-Just to clarify, when I say startup, I do not mean company size.
+Also, just to clarify, when I say startup, I do not mean company size.
 
 I mean the place where this kind of work happens.
 
@@ -164,7 +157,9 @@ I just care about the operating reality.
 
 *So, it could be anywhere the work is urgent, owned, and carried by people who refuse to be passive.*
 
-That is the place I am talking about.
+That is the kind of place I am talking about.
+
+I might have burnt bridges to some places by writing this blog. That's absolutely fine. And, I actually want that.
 
 Keeping every bridge open can become a way of never choosing a life. Optionality can become a slow poison:
 - it can make you rationalize a path you never wanted
@@ -180,6 +175,8 @@ Some paths need to close. Some versions of you need to end.
 - the version that keeps one foot in safety and calls it strategy
 
 I am done with that version.
+
+---
 
 ## 6
 **This is how I want to live!**
