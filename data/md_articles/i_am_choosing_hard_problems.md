@@ -1,6 +1,6 @@
 ---
-title: "I Am Choosing Hard Problems (Long Version)"
-slug: "i-am-choosing-hard-problems-long-version"
+title: "I Am Choosing Hard Problems"
+slug: "i-am-choosing-hard-problems"
 category: "non-tech"
 publishedAt: "2026-05-21T17:58:02.000Z"
 ---
