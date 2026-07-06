@@ -23,13 +23,6 @@ export type ExperienceItem = {
   highlights: string[];
 };
 
-export type ProjectItem = {
-  title: string;
-  description: string;
-  stack: string[];
-  href: string;
-};
-
 export type AboutItem = {
   title: string;
   description: string;
@@ -66,7 +59,6 @@ export const siteData = {
     { label: 'Blog', href: '/blog' },
     { label: 'Content', href: '/content' },
     { label: 'Experience', href: '/experience' },
-    { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },
     { label: 'CV', href: '/cv/senthilnathan_t.pdf' },
     { label: 'Contact', href: '/contact' },
@@ -121,38 +113,6 @@ export const siteData = {
       ],
     },
   ] as ExperienceItem[],
-  projectsIntro:
-    'Selected technical projects I want to feature right now.',
-  projects: [
-    {
-      title: 'Fraud Ring Investigator Arena',
-      description:
-        'Built a compact OpenEnv benchmark for sequential fraud investigation, where agents inspect hidden financial networks, manage limited budget, place interventions, and reason about delayed outcomes across procedural cases.',
-      stack: ['Python', 'OpenEnv', 'RL Benchmark'],
-      href: 'https://github.com/senthilnathan01/fraud-ring-investigator-arena',
-    },
-    // {
-    //   title: 'OpenAI Parameter Golf Challenge',
-    //   description:
-    //     'Parameter Golf, a research challenge focused on minimizing held-out loss under a 16 MB artifact limit and a 10-minute training budget on 8xH100s.',
-    //   stack: ['OpenAI', 'LLM Efficiency', 'Research Challenge'],
-    //   href: 'https://senthilnathan01.github.io/research-garden/projects/open-ai-challenge-parameter-golf/',
-    // },
-    {
-      title: 'Implementation of Custom Deep Learning Architectures for Computer Vision',
-      description:
-        'Built a broad computer vision portfolio spanning neural style transfer, YOLOv2 vehicle detection, FaceNet-style recognition, U-Net segmentation, ResNet50 classification, and CNN-based visual classifiers.',
-      stack: ['Python', 'Deep Learning', 'Computer Vision'],
-      href: 'https://github.com/senthilnathan01/my_ml_projects',
-    },
-    {
-      title: 'Foundational Machine Learning and Statistical Modeling',
-      description:
-        'Implemented a wide range of statistical and machine learning methods from scratch, including Bayes classifiers, Bayesian regression, clustering, ensemble methods, EM for mixture models, PCA plus k-NN, and regularized regression.',
-      stack: ['Python', 'Statistical ML', 'Pattern Recognition'],
-      href: 'https://github.com/senthilnathan01/prml-project',
-    },
-  ] as ProjectItem[],
   growthPhilosophy:
     "I am all about becoming my absolute best. It physically hurts me to leave my full potential untapped. I keep an open mind and learn across domains, because depth in one area only goes so far unless you also understand where and how to apply it.",
   about: [

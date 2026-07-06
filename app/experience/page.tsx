@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { CommandSection } from '@/components/CommandSection';
 import { SiteHeader } from '@/components/SiteHeader';
 import { TerminalWindow } from '@/components/TerminalWindow';
@@ -41,12 +40,6 @@ export default function ExperiencePage() {
               </li>
             ))}
           </ul>
-        </CommandSection>
-
-        <CommandSection command="cd projects">
-          <Link href="/projects" className="inline-flex text-sm text-emerald-300 transition hover:text-emerald-200">
-            Open projects page ↗
-          </Link>
         </CommandSection>
       </TerminalWindow>
     </main>

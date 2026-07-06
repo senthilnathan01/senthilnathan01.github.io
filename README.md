@@ -16,7 +16,6 @@ Terminal-inspired personal portfolio built with Next.js App Router and deployed 
 - Home
 - Blog
 - Experience
-- Projects
 - Content
 - About
 - Research
@@ -130,7 +129,6 @@ Edit `data/siteData.ts` for:
 - profile facts
 - current status
 - experience
-- projects
 - about content
 - contact blurbs
 - CV link metadata
