@@ -50,7 +50,8 @@ export const siteData = {
   profileFacts: [
     { label: 'name', value: 'Senthilnathan' },
     { label: 'role', value: 'AI / ML / Software Engineering' },
-    { label: 'company', value: 'Featurely AI' },
+    { label: 'company', value: '(Open to high-agency roles)' },
+    { label: 'previously', value: 'Featurely AI, Caterpillar, ...' },
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
     { label: 'focus', value: 'Applied AI, Systems (ML and Software)' },
   ] as ProfileFact[],
