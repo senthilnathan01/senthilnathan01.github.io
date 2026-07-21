@@ -112,7 +112,7 @@ function ContentCalendar({
   const todayKey = toDateKey(new Date());
 
   return (
-    <div className="space-y-5">
+    <div className="mx-auto w-full max-w-3xl space-y-4">
       <div className="flex items-center justify-between gap-3">
         <button
           type="button"
@@ -144,7 +144,7 @@ function ContentCalendar({
       <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
         {days.map((day, index) => {
           if (!day) {
-            return <div key={`blank-${index}`} className="aspect-square rounded-lg border border-transparent sm:aspect-auto sm:min-h-28 lg:min-h-32" />;
+            return <div key={`blank-${index}`} className="aspect-square rounded-lg border border-transparent sm:aspect-auto sm:min-h-20" />;
           }
 
           const dateKey = toDateKey(day);
@@ -156,7 +156,7 @@ function ContentCalendar({
             <button
               key={dateKey}
               type="button"
-              className={`group relative flex aspect-square min-w-0 flex-col rounded-lg border p-1.5 text-left transition sm:aspect-auto sm:min-h-28 sm:p-2 lg:min-h-32 ${
+              className={`group relative flex aspect-square min-w-0 flex-col rounded-lg border p-1.5 text-left transition sm:aspect-auto sm:min-h-20 sm:p-2 ${
                 hasEntries
                   ? 'border-zinc-700 bg-zinc-950/70 hover:border-zinc-500'
                   : 'border-zinc-800 bg-zinc-950/35 hover:border-zinc-700'
@@ -169,12 +169,26 @@ function ContentCalendar({
 
               {hasEntries ? (
                 <>
-                  <span className="mt-auto text-[0.68rem] leading-none text-zinc-400 sm:text-xs">
-                    {dayEntries.length}
+                  <span className="mt-auto leading-none text-zinc-400">
+                    <span className="font-sans text-xs font-semibold tabular-nums sm:text-sm">{dayEntries.length}</span>
+                    <span className="hidden text-[0.68rem] sm:inline">
+                      {' '}
+                      {dayEntries.length === 1 ? 'item' : 'items'}
+                    </span>
                   </span>
-                  <span className="pointer-events-none absolute bottom-[calc(100%+0.5rem)] left-1/2 z-20 hidden w-52 -translate-x-1/2 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs leading-5 text-zinc-300 opacity-0 shadow-[0_16px_45px_rgba(0,0,0,0.42)] transition group-hover:opacity-100 group-focus-visible:opacity-100 sm:block">
-                    {dayEntries.slice(0, 4).map((entry) => entry.title).join(', ')}
-                    {dayEntries.length > 4 ? ` +${dayEntries.length - 4} more` : ''}
+                  <span className="pointer-events-none absolute bottom-[calc(100%+0.5rem)] left-1/2 z-20 hidden w-64 -translate-x-1/2 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 text-xs leading-5 text-zinc-300 opacity-0 shadow-[0_16px_45px_rgba(0,0,0,0.42)] transition group-hover:opacity-100 group-focus-visible:opacity-100 sm:block">
+                    <span className="mb-1.5 block border-b border-zinc-800 pb-1.5 font-medium text-zinc-400">
+                      {formatContentDate(dateKey)}
+                    </span>
+                    {dayEntries.slice(0, 4).map((entry, entryIndex) => (
+                      <span key={entry.id} className="flex gap-2 text-left">
+                        <span className="shrink-0 text-zinc-500">{entryIndex + 1}.</span>
+                        <span>{entry.title}</span>
+                      </span>
+                    ))}
+                    {dayEntries.length > 4 ? (
+                      <span className="mt-1 block text-left text-zinc-500">+{dayEntries.length - 4} more</span>
+                    ) : null}
                   </span>
                 </>
               ) : null}
@@ -567,7 +581,7 @@ export function ContentAdmin({
 export function ContentLog() {
   const client = getSupabaseBrowserClient();
   const [entries, setEntries] = useState<ContentEntry[]>([]);
-  const [view, setView] = useState<ViewMode>('calendar');
+  const [view, setView] = useState<ViewMode>('list');
   const [listPage, setListPage] = useState(0);
   const [highlightedDate, setHighlightedDate] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<ContentCategory[]>(() => [...contentCategories]);
@@ -644,7 +658,7 @@ export function ContentLog() {
           </p>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="inline-flex rounded-lg border border-zinc-800 bg-zinc-950/55 p-1">
-              {(['calendar', 'list'] as ViewMode[]).map((mode) => (
+              {(['list', 'calendar'] as ViewMode[]).map((mode) => (
                 <button
                   key={mode}
                   type="button"
