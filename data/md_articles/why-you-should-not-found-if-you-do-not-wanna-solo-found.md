@@ -9,7 +9,9 @@ publishedAt: "2026-07-21T00:00:00.000Z"
 
 ## TLDR
 
-My current view: **start alone**. **Build something real first**. Only consider a co-founder once you have traction, clarity, and proof that the company needs a specific person to reach the next stage. At that point, I think you negotiate from strength instead of desperation, and you are less likely to hand over control of the company’s mission or direction too early.
+My current view, as someone who has not founded yet: **start alone** if you can. Do not make finding a co-founder step one before you have validated an idea, built anything, or spoken to customers. I think early co-founder search is often about comfort, not capability, and it can make you give away speed, clarity, equity, and decision rights before the company has earned that trade.
+
+Solo founding seems uncomfortable, but that discomfort is useful. It forces ownership, conviction, and faster learning. And today, AI makes the starting line much easier: you can think, build, test, write outreach, research, and iterate without immediately needing a full team. If you want nuance, seek experienced founders and advisors. But IMO, advice is different from handing someone founder-level control. **Build first. Own the early mess. Then decide who, if anyone, should join.**
 
 ## The Story We All Love
 
