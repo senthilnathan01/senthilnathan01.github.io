@@ -39,7 +39,7 @@ cp .env.example .env.local
 `.env.example` currently contains:
 
 ```bash
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_CF_BEACON_TOKEN=your-cloudflare-beacon-token
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
@@ -94,14 +94,15 @@ Vercel uses the standard Next.js build output.
 
 There are two analytics systems in the project.
 
-### Google Analytics
+### Cloudflare Web Analytics
 
-Google Analytics is enabled only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set.
+Cloudflare Web Analytics is enabled only when `NEXT_PUBLIC_CF_BEACON_TOKEN` is set.
 
-- The external loader is injected from `app/layout.tsx`.
-- Initialization is handled by `public/ga-init.js`.
-- For GitHub Pages, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` as a GitHub repository secret so the Actions build can inject it.
-- For Vercel, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the project environment variables.
+- The beacon script is injected from `app/layout.tsx`.
+- The token is public (it ships in the page HTML), so store it as a repository _variable_, not a secret.
+- For GitHub Pages, set `NEXT_PUBLIC_CF_BEACON_TOKEN` as a GitHub repository variable so the Actions build can inject it.
+- For Vercel, set `NEXT_PUBLIC_CF_BEACON_TOKEN` in the project environment variables.
+- The same token works for the research garden at `/research-garden/`, since Cloudflare tracks by the shared `senthilnathan01.github.io` hostname. Filter by path in the dashboard to separate the two.
 
 ### Vercel Web Analytics
 
@@ -221,7 +222,7 @@ That fallback is important because a plain local `npm run build` behaves like th
 1. Push the repository to GitHub.
 2. In GitHub, open `Settings -> Pages`.
 3. Set the source to `GitHub Actions`.
-4. Add the `NEXT_PUBLIC_GA_MEASUREMENT_ID` repository secret if you want GA enabled there.
+4. Add the `NEXT_PUBLIC_CF_BEACON_TOKEN` repository variable if you want Cloudflare Web Analytics enabled there.
 5. Push to `main` or trigger the workflow manually.
 
 ## Vercel setup
@@ -229,7 +230,7 @@ That fallback is important because a plain local `npm run build` behaves like th
 1. Import the repository into Vercel.
 2. Keep the framework preset as `Next.js`.
 3. Leave the output directory blank.
-4. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` if you want Google Analytics enabled.
+4. Add `NEXT_PUBLIC_CF_BEACON_TOKEN` if you want Cloudflare Web Analytics enabled.
 5. Enable Web Analytics in the Vercel project settings.
 6. Optionally set `DEPLOY_TARGET=vercel` to make the deployment target explicit.
 
