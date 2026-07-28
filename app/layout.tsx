@@ -5,7 +5,7 @@ import './globals.css';
 
 const deployTarget = process.env.DEPLOY_TARGET ?? (process.env.VERCEL === '1' ? 'vercel' : 'github-pages');
 const isVercelDeployment = deployTarget === 'vercel';
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 const themeBootstrapScript = `
   (() => {
     const defaultTheme = 'dark';
@@ -48,11 +48,12 @@ export default function RootLayout({
     <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
-        {gaMeasurementId ? (
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
-            <script defer src={`/ga-init.js?id=${gaMeasurementId}`} />
-          </>
+        {cfBeaconToken ? (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+          />
         ) : null}
       </head>
       <body className="bg-zinc-950 font-mono text-zinc-100 antialiased">
