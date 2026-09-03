@@ -50,8 +50,8 @@ export const siteData = {
   profileFacts: [
     { label: 'name', value: 'Senthilnathan' },
     { label: 'role', value: 'AI / ML / Software Engineering' },
-    { label: 'company', value: '(Open to high-agency roles)' },
-    { label: 'previously', value: 'Featurely AI (Bling Cap funded), Caterpillar' },
+    { label: 'company', value: 'Featurely AI (Bling Cap funded startup)' },
+    // { label: 'previously', value: ', Caterpillar' },(Open to high-agency roles)
     { label: 'education', value: 'B.Tech + M.Tech at IIT Madras' },
     { label: 'focus', value: 'Applied AI, Systems (ML and Software)' },
   ] as ProfileFact[],
